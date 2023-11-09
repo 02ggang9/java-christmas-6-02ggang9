@@ -95,4 +95,30 @@ public class ChristmasOutputView {
 
         System.out.println(formatter.format(afterDiscountAmount) + "원");
     }
+
+    public void printEventBadge(int totalDiscountAmount) {
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
+
+        System.out.println();
+        System.out.println("<12월 이벤트 배지>");
+
+        if (totalDiscountAmount == 0) {
+            System.out.println("없음");
+            return;
+        }
+
+        if (totalDiscountAmount >= 5000 && totalDiscountAmount < 10000) {
+            System.out.println("별");
+        }
+
+        if (totalDiscountAmount >= 10000 && totalDiscountAmount < 20000) {
+            System.out.println("트리");
+        }
+
+        if (totalDiscountAmount >= 20000) {
+            System.out.println("산타");
+        }
+
+
+    }
 }
