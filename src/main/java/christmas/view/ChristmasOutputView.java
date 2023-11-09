@@ -45,7 +45,7 @@ public class ChristmasOutputView {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
 
         System.out.println();
-        System.out.println("혜택 내역");
+        System.out.println("<혜택 내역>");
         if (totalCount == 0) {
             System.out.println("없음");
             return;
@@ -71,5 +71,19 @@ public class ChristmasOutputView {
             System.out.println("증정 이벤트: -" + formatter.format(christmasDiscountAmount) + "원");
         }
 
+    }
+
+    public void totalDiscountAmount(int totalDiscountAmount) {
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
+
+        System.out.println();
+        System.out.println("<총혜택 내역>");
+
+        if (totalDiscountAmount == 0) {
+            System.out.println("없음");
+            return;
+        }
+
+        System.out.println("-" + formatter.format(totalDiscountAmount) + "원");
     }
 }

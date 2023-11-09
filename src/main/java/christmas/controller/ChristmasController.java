@@ -51,7 +51,12 @@ public class ChristmasController {
 
         printBenefitDetails(totalDiscountAmount, weekdayDiscountAmount, christmasDiscountAmount, weekendDiscountAmount, specialDiscountAmount, giveDiscountAmount);
 
-        // STEP 8 :
+        // STEP 8 : 총 혜택 금액 출력
+        printTotalDiscountAmount(totalDiscountAmount);
+    }
+
+    private void printTotalDiscountAmount(int totalDiscountAmount) {
+        christmasOutputView.totalDiscountAmount(totalDiscountAmount);
     }
 
     private void printBenefitDetails(int totalCount, int weekdayDiscountAmount, int christmasDiscountAmount, int weekendDiscountAmount, int specialDiscountAmount, int giveDiscountAmount) {
