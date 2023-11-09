@@ -18,6 +18,6 @@ public class ChristmasDateOfVisitRepository {
     }
 
     public int findDateOfVisit() {
-        return dateOfVisitDatabase.get(0);
+        return dateOfVisitDatabase.get(0L);
     }
 }

@@ -46,7 +46,7 @@ public class ChristmasOutputView {
 
         System.out.println();
         System.out.println("<혜택 내역>");
-        if (totalCount == 0) {
+        if (totalCount > 0 && totalCount < 10000) {
             System.out.println("없음");
             return;
         }
@@ -77,7 +77,7 @@ public class ChristmasOutputView {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
 
         System.out.println();
-        System.out.println("<총혜택 내역>");
+        System.out.println("<총혜택 금액>");
 
         if (totalDiscountAmount == 0) {
             System.out.println("없음");
@@ -102,7 +102,7 @@ public class ChristmasOutputView {
         System.out.println();
         System.out.println("<12월 이벤트 배지>");
 
-        if (totalDiscountAmount == 0) {
+        if (totalDiscountAmount > 0 && totalDiscountAmount < 5000) {
             System.out.println("없음");
             return;
         }
