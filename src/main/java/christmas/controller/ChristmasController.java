@@ -3,6 +3,8 @@ package christmas.controller;
 import christmas.service.ChristmasService;
 import christmas.view.ChristmasInputView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ChristmasController {
@@ -25,8 +27,14 @@ public class ChristmasController {
 
     }
 
-    private void saveOrderMenu(List<String> orderMenuAndCount) {
+    private List<String> saveOrderMenu(List<String> orderMenuAndCount) {
+        List<String> strings = new ArrayList<>();
+        for (String s : orderMenuAndCount) {
+            String[] split = s.split("-");
+            strings.add(split[0]);
+        }
 
+        return strings;
     }
 
     private List<String> getOrderMenuAndCount() {
