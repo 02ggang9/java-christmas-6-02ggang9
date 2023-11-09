@@ -1,7 +1,10 @@
 package christmas.view;
 
+import christmas.domain.GiveMenu;
+
 import java.text.DecimalFormat;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 public class ChristmasOutputView {
@@ -25,5 +28,14 @@ public class ChristmasOutputView {
         System.out.println("<할인 전 총주문 금액>");
 
         System.out.println(formatter.format(amountBeforeDiscount) + "원");
+    }
+
+    public void printGiveMenu(Optional<GiveMenu> giveMenu) {
+        System.out.println();
+        if (giveMenu.isEmpty()) {
+            System.out.println("없음");
+        }
+
+        System.out.println("샴페인 1개");
     }
 }

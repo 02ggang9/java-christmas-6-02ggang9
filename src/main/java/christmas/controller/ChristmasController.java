@@ -1,14 +1,13 @@
 package christmas.controller;
 
+import christmas.domain.GiveMenu;
 import christmas.repository.ChristmasOrderMenuRepository;
 import christmas.service.ChristmasService;
 import christmas.view.ChristmasInputView;
 import christmas.view.ChristmasOutputView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import javax.swing.text.html.Option;
+import java.util.*;
 
 public class ChristmasController {
 
@@ -37,6 +36,18 @@ public class ChristmasController {
         // STEP5 : 할인 전 총 주문 금액 출력
         Integer amountBeforeDiscount = getAmountBeforeDiscount(orderMenus);
         printTotalAmountBeforeDiscount(amountBeforeDiscount);
+
+        // STEP6 : 증정 메뉴 출력
+        Optional<GiveMenu> giveMenu = getGiveMenu(amountBeforeDiscount);
+        printGiveMenu(giveMenu);
+    }
+
+    private Optional<GiveMenu> getGiveMenu(Integer amountBeforeDiscount) {
+        return christmasService.getGiveMenu(amountBeforeDiscount);
+    }
+
+    private void printGiveMenu(Optional<GiveMenu> giveMenu) {
+        christmasOutputView.printGiveMenu(giveMenu);
     }
 
     private void printTotalAmountBeforeDiscount(Integer amountBeforeDiscount) {

@@ -1,9 +1,12 @@
 package christmas.service;
 
+import christmas.domain.GiveMenu;
 import christmas.domain.OrderMenu;
 import christmas.repository.ChristmasDateOfVisitRepository;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 public class ChristmasService {
@@ -22,5 +25,13 @@ public class ChristmasService {
         }
 
         return totalAmount;
+    }
+
+    public Optional<GiveMenu> getGiveMenu(Integer amount) {
+        if (GiveMenu.CHAMPAGNE.isOver(amount)) {
+            return Optional.of(GiveMenu.CHAMPAGNE);
+        }
+
+        return Optional.empty();
     }
 }
