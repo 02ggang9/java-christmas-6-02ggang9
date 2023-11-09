@@ -30,10 +30,12 @@ public class ChristmasOutputView {
         System.out.println(formatter.format(amountBeforeDiscount) + "원");
     }
 
-    public void printGiveMenu(Optional<GiveMenu> giveMenu) {
+    public void printGiveMenu(GiveMenu giveMenu) {
         System.out.println();
-        if (giveMenu.isEmpty()) {
+        System.out.println("<증정 메뉴>");
+        if (giveMenu == GiveMenu.NOTING) {
             System.out.println("없음");
+            return;
         }
 
         System.out.println("샴페인 1개");

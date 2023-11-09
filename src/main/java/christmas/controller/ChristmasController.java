@@ -38,15 +38,15 @@ public class ChristmasController {
         printTotalAmountBeforeDiscount(amountBeforeDiscount);
 
         // STEP6 : 증정 메뉴 출력
-        Optional<GiveMenu> giveMenu = getGiveMenu(amountBeforeDiscount);
+        GiveMenu giveMenu = getGiveMenu(amountBeforeDiscount);
         printGiveMenu(giveMenu);
     }
 
-    private Optional<GiveMenu> getGiveMenu(Integer amountBeforeDiscount) {
+    private GiveMenu getGiveMenu(Integer amountBeforeDiscount) {
         return christmasService.getGiveMenu(amountBeforeDiscount);
     }
 
-    private void printGiveMenu(Optional<GiveMenu> giveMenu) {
+    private void printGiveMenu(GiveMenu giveMenu) {
         christmasOutputView.printGiveMenu(giveMenu);
     }
 

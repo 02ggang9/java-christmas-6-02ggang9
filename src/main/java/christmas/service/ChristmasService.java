@@ -27,11 +27,11 @@ public class ChristmasService {
         return totalAmount;
     }
 
-    public Optional<GiveMenu> getGiveMenu(Integer amount) {
+    public GiveMenu getGiveMenu(Integer amount) {
         if (GiveMenu.CHAMPAGNE.isOver(amount)) {
-            return Optional.of(GiveMenu.CHAMPAGNE);
+            return GiveMenu.CHAMPAGNE;
         }
 
-        return Optional.empty();
+        return GiveMenu.NOTING;
     }
 }
