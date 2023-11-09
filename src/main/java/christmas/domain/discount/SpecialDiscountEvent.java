@@ -9,9 +9,9 @@ public class SpecialDiscountEvent {
 
     private static final int BASE_DISCOUNT_AMOUNT = 1000;
 
-    public int discountAmount(int dateOfVisit, int mainMenuCount) {
+    public int discountAmount(int dateOfVisit) {
         if (days.contains(dateOfVisit)) {
-            return BASE_DISCOUNT_AMOUNT * mainMenuCount;
+            return BASE_DISCOUNT_AMOUNT;
         }
 
         return 0;
