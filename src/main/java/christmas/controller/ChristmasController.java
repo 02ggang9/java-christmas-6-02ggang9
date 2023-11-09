@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.repository.ChristmasOrderMenuRepository;
 import christmas.service.ChristmasService;
 import christmas.view.ChristmasInputView;
 
@@ -11,6 +12,7 @@ public class ChristmasController {
 
     private final ChristmasInputView christmasInputView = new ChristmasInputView();
     private final ChristmasService christmasService = new ChristmasService();
+    private final ChristmasOrderMenuRepository christmasOrderMenuRepository = new ChristmasOrderMenuRepository();
 
     public void run() {
         // STEP1 : 예상 방문 날짜 입력받고 저장
@@ -24,17 +26,23 @@ public class ChristmasController {
     }
 
     private void saveOrderMenuCount(List<String> orderMenuAndCount) {
+        List<String> strings = new ArrayList<>();
+        for (String s : orderMenuAndCount) {
+            String[] split = s.split("-");
+            strings.add(split[1]);
+        }
 
+        christmasOrderMenuRepository.saveOrderMenus(strings);
     }
 
-    private List<String> saveOrderMenu(List<String> orderMenuAndCount) {
+    private void saveOrderMenu(List<String> orderMenuAndCount) {
         List<String> strings = new ArrayList<>();
         for (String s : orderMenuAndCount) {
             String[] split = s.split("-");
             strings.add(split[0]);
         }
 
-        return strings;
+        christmasOrderMenuRepository.saveOrderMenusCounts(strings);
     }
 
     private List<String> getOrderMenuAndCount() {
