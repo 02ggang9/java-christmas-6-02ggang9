@@ -3,7 +3,9 @@ package christmas.service;
 import christmas.domain.GiveMenu;
 import christmas.domain.OrderMenu;
 import christmas.domain.discount.ChristmasDiscountEvent;
+import christmas.domain.discount.WeekdayDiscountEvent;
 import christmas.repository.ChristmasDateOfVisitRepository;
+import christmas.repository.ChristmasOrderMenuRepository;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +15,7 @@ import java.util.Set;
 public class ChristmasService {
 
     private final ChristmasDateOfVisitRepository repository = new ChristmasDateOfVisitRepository();
+    private final ChristmasOrderMenuRepository christmasOrderMenuRepository = new ChristmasOrderMenuRepository();
 
     public void saveDateOfVisit(int dateOfVisit) {
         repository.saveDateOfVisit(dateOfVisit);
@@ -39,5 +42,13 @@ public class ChristmasService {
     public int getChristmasDiscountAmount() {
         int dateOfVisit = repository.findDateOfVisit();
         return ChristmasDiscountEvent.discountAmount(dateOfVisit);
+    }
+
+    public int getWeekdayDiscountAmount() {
+        WeekdayDiscountEvent weekdayDiscountEvent = new WeekdayDiscountEvent();
+        int dateOfVisit = repository.findDateOfVisit();
+        int dessertCount = christmasOrderMenuRepository.findDessertCount();
+        weekdayDiscountEvent.discountAmount(dateOfVisit, dessertCount);
+
     }
 }
