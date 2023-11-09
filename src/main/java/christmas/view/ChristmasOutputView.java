@@ -45,6 +45,7 @@ public class ChristmasOutputView {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
 
         System.out.println();
+        System.out.println("혜택 내역");
         if (totalCount == 0) {
             System.out.println("없음");
             return;
