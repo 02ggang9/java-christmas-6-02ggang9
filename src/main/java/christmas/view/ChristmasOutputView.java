@@ -40,4 +40,35 @@ public class ChristmasOutputView {
 
         System.out.println("샴페인 1개");
     }
+
+    public void printBenefitDetails(int totalCount, int christmasDiscountAmount, int weekdayDiscountAmount, int weekendDiscountAmount, int specialDiscountAmount, int giveDiscountAmount) {
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
+
+        System.out.println();
+        if (totalCount == 0) {
+            System.out.println("없음");
+            return;
+        }
+
+        if (christmasDiscountAmount != 0) {
+            System.out.println("크리스마스 디데이 할인: -" + formatter.format(christmasDiscountAmount) + "원");
+        }
+
+        if (weekdayDiscountAmount != 0) {
+            System.out.println("평일 할인: -" + formatter.format(christmasDiscountAmount) + "원");
+        }
+
+        if (weekendDiscountAmount != 0) {
+            System.out.println("주말 할인: -" + formatter.format(christmasDiscountAmount) + "원");
+        }
+
+        if (specialDiscountAmount != 0) {
+            System.out.println("특별 할인: -" + formatter.format(christmasDiscountAmount) + "원");
+        }
+
+        if (giveDiscountAmount != 0) {
+            System.out.println("증정 이벤트: -" + formatter.format(christmasDiscountAmount) + "원");
+        }
+
+    }
 }

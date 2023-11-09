@@ -45,8 +45,24 @@ public class ChristmasController {
         int christmasDiscountAmount = getChristmasDiscountAmount();
         int weekdayDiscountAmount = getWeekdayDiscountAmount();
         int weekendDiscountAmount = getWeekendDiscountAmount();
-        getSpecialDiscountAmount();
+        int specialDiscountAmount = getSpecialDiscountAmount();
+        int giveDiscountAmount = getGiveDiscountAmount(giveMenu);
+        int totalDiscountAmount = christmasDiscountAmount + weekdayDiscountAmount + weekendDiscountAmount + specialDiscountAmount + giveDiscountAmount;
 
+        printBenefitDetails(totalDiscountAmount, weekdayDiscountAmount, christmasDiscountAmount, weekendDiscountAmount, specialDiscountAmount, giveDiscountAmount);
+
+    }
+
+    private void printBenefitDetails(int totalCount, int weekdayDiscountAmount, int christmasDiscountAmount, int weekendDiscountAmount, int specialDiscountAmount, int giveDiscountAmount) {
+        christmasOutputView.printBenefitDetails(totalCount, christmasDiscountAmount, weekdayDiscountAmount, weekendDiscountAmount, specialDiscountAmount, giveDiscountAmount);
+    }
+
+    private int getGiveDiscountAmount(GiveMenu giveMenu) {
+        if (giveMenu == GiveMenu.CHAMPAGNE) {
+            return 25000;
+        }
+
+        return 0;
     }
 
     private int getSpecialDiscountAmount() {
