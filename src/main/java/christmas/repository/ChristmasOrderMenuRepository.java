@@ -28,7 +28,7 @@ public class ChristmasOrderMenuRepository {
         int result = 0;
         for (Map.Entry<String, Integer> entry : entries) {
             String key = entry.getKey();
-            if (key.matches("티본스테이크|바비큐립|해산물파스타|크리스마스파스타")) {
+            if (key.matches("초코케이크|아이스크림")) {
                 result += entry.getValue();
             }
         }
