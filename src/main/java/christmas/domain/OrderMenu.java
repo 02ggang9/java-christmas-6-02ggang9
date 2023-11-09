@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import java.util.Arrays;
 import java.util.function.Function;
 
 public enum OrderMenu {
@@ -51,5 +52,12 @@ public enum OrderMenu {
 
     public Function<String, Boolean> getFunction() {
         return function;
+    }
+
+    public static OrderMenu getOrderMenu(String orderName) {
+        return Arrays.stream(OrderMenu.values())
+                .filter(orderMenu -> orderMenu.getMenuName().equals(orderName))
+                .findFirst()
+                .orElse(null);
     }
 }
