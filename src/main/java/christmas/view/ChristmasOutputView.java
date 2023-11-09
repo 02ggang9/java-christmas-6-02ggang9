@@ -16,4 +16,11 @@ public class ChristmasOutputView {
             System.out.println(orderMenu.getKey() + " " + orderMenu.getValue());
         }
     }
+
+    public void printTotalAmountBeforeDiscount(Integer amountBeforeDiscount) {
+        System.out.println();
+        System.out.println("<할인 전 총주문 금액>");
+
+        System.out.println(amountBeforeDiscount + "원");
+    }
 }
