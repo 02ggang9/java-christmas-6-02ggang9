@@ -86,4 +86,13 @@ public class ChristmasOutputView {
 
         System.out.println("-" + formatter.format(totalDiscountAmount) + "원");
     }
+
+    public void printAfterDiscountAmount(int afterDiscountAmount) {
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
+
+        System.out.println();
+        System.out.println("<할인 후 예상 결제 금액>");
+
+        System.out.println(formatter.format(afterDiscountAmount) + "원");
+    }
 }

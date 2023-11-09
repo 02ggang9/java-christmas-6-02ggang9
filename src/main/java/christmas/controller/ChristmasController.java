@@ -53,6 +53,13 @@ public class ChristmasController {
 
         // STEP 8 : 총 혜택 금액 출력
         printTotalDiscountAmount(totalDiscountAmount);
+
+        // STEP 9 : 할인 후 예상 결제 금액 출력
+        printAfterDiscountAmount(amountBeforeDiscount - totalDiscountAmount);
+    }
+
+    private void printAfterDiscountAmount(int afterDiscountAmount) {
+        christmasOutputView.printAfterDiscountAmount(afterDiscountAmount);
     }
 
     private void printTotalDiscountAmount(int totalDiscountAmount) {
