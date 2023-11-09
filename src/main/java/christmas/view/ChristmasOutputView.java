@@ -10,6 +10,7 @@ public class ChristmasOutputView {
     }
 
     public void printOrderMenuAndCounts(Set<Map.Entry<String, Integer>> orderMenus) {
+        System.out.println();
         System.out.println("<주문 메뉴>");
         for (Map.Entry<String, Integer> orderMenu : orderMenus) {
             System.out.println(orderMenu.getKey() + " " + orderMenu.getValue());
