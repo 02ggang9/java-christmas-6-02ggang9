@@ -2,6 +2,7 @@ package christmas.service;
 
 import christmas.domain.GiveMenu;
 import christmas.domain.OrderMenu;
+import christmas.domain.discount.ChristmasDiscountEvent;
 import christmas.repository.ChristmasDateOfVisitRepository;
 
 import java.util.List;
@@ -33,5 +34,10 @@ public class ChristmasService {
         }
 
         return GiveMenu.NOTING;
+    }
+
+    public int getChristmasDiscountAmount() {
+        int dateOfVisit = repository.findDateOfVisit();
+        return ChristmasDiscountEvent.discountAmount(dateOfVisit);
     }
 }

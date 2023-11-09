@@ -17,4 +17,7 @@ public class ChristmasDateOfVisitRepository {
         userId++;
     }
 
+    public int findDateOfVisit() {
+        return dateOfVisitDatabase.get(0);
+    }
 }

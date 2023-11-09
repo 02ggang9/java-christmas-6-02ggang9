@@ -40,6 +40,13 @@ public class ChristmasController {
         // STEP6 : 증정 메뉴 출력
         GiveMenu giveMenu = getGiveMenu(amountBeforeDiscount);
         printGiveMenu(giveMenu);
+
+        // STEP 7 : 혜택 내역 출력
+        int christmasDiscountAmount = getChristmasDiscountAmount();
+    }
+
+    private int getChristmasDiscountAmount() {
+        return christmasService.getChristmasDiscountAmount();
     }
 
     private GiveMenu getGiveMenu(Integer amountBeforeDiscount) {
