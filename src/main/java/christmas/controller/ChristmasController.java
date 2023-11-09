@@ -22,27 +22,32 @@ public class ChristmasController {
         // STEP2 : 주문할 메뉴와 개수 입력 받고 저장
         List<String> orderMenuAndCount = getOrderMenuAndCount();
         saveOrderMenu(orderMenuAndCount);
-        saveOrderMenuCount(orderMenuAndCount);
+//        saveOrderMenuCount(orderMenuAndCount);
     }
 
-    private void saveOrderMenuCount(List<String> orderMenuAndCount) {
-        List<String> strings = new ArrayList<>();
-        for (String s : orderMenuAndCount) {
-            String[] split = s.split("-");
-            strings.add(split[1]);
-        }
-
-        christmasOrderMenuRepository.saveOrderMenus(strings);
-    }
+//    private void saveOrderMenuCount(List<String> orderMenuAndCount) {
+//        List<String> strings = new ArrayList<>();
+//        for (String s : orderMenuAndCount) {
+//            String[] split = s.split("-");
+//            strings.add(split[1]);
+//        }
+//
+//    }
 
     private void saveOrderMenu(List<String> orderMenuAndCount) {
-        List<String> strings = new ArrayList<>();
+        List<String> orderMenus = new ArrayList<>();
         for (String s : orderMenuAndCount) {
             String[] split = s.split("-");
-            strings.add(split[0]);
+            orderMenus.add(split[0]);
         }
 
-        christmasOrderMenuRepository.saveOrderMenusCounts(strings);
+        List<String> orderMenusCounts = new ArrayList<>();
+        for (String s : orderMenuAndCount) {
+            String[] split = s.split("-");
+            orderMenusCounts.add(split[1]);
+        }
+
+        christmasOrderMenuRepository.saveOrderMenus(orderMenus, orderMenusCounts);
     }
 
     private List<String> getOrderMenuAndCount() {
