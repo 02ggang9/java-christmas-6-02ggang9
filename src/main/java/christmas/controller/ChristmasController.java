@@ -6,8 +6,9 @@ import christmas.view.ChristmasInputView;
 import christmas.view.ChristmasOutputView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class ChristmasController {
 
@@ -28,6 +29,18 @@ public class ChristmasController {
 
         // STEP3 : 이벤트 혜택 미리 보기 안내 메시지 출력
         printEventInformationMessage();
+
+        // STEP4 : 사용자가 주문한 메뉴와 개수 출력
+        Set<Map.Entry<String, Integer>> orderMenus = getOrderMenus();
+        printOrderMenuAndCounts(orderMenus);
+    }
+
+    private void printOrderMenuAndCounts(Set<Map.Entry<String, Integer>> orderMenus) {
+        christmasOutputView.printOrderMenuAndCounts(orderMenus);
+    }
+
+    private Set<Map.Entry<String, Integer>> getOrderMenus() {
+        return christmasOrderMenuRepository.findAllMenusAndCounts();
     }
 
     private void printEventInformationMessage() {

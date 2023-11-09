@@ -3,6 +3,7 @@ package christmas.repository;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class ChristmasOrderMenuRepository {
 
@@ -14,5 +15,9 @@ public class ChristmasOrderMenuRepository {
             orderMenuDatabase.put(orderMenus.get(i), Integer.parseInt(orderMenusCounts.get(i)));
         }
 
+    }
+
+    public Set<Map.Entry<String, Integer>> findAllMenusAndCounts() {
+        return orderMenuDatabase.entrySet();
     }
 }
