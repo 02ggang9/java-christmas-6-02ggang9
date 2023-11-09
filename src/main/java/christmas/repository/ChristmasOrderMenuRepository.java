@@ -14,7 +14,11 @@ public class ChristmasOrderMenuRepository {
     public void saveOrderMenus(List<String> orderMenus, List<String> orderMenusCounts) {
 
         for (int i = 0; i < orderMenus.size(); i++) {
-            orderMenuDatabase.put(orderMenus.get(i), Integer.parseInt(orderMenusCounts.get(i)));
+            try {
+                orderMenuDatabase.put(orderMenus.get(i), Integer.parseInt(orderMenusCounts.get(i)));
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            }
         }
 
     }
