@@ -34,4 +34,16 @@ public class ChristmasOrderMenuRepository {
         }
         return result;
     }
+
+    public int findMainCount() {
+        Set<Map.Entry<String, Integer>> entries = orderMenuDatabase.entrySet();
+        int result = 0;
+        for (Map.Entry<String, Integer> entry : entries) {
+            String key = entry.getKey();
+            if (key.matches("티본스테이크|바비큐립|해산물파스타|크리스마스파스타")) {
+                result += entry.getValue();
+            }
+        }
+        return result;
+    }
 }

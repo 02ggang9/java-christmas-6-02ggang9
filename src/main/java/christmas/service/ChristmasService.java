@@ -4,6 +4,7 @@ import christmas.domain.GiveMenu;
 import christmas.domain.OrderMenu;
 import christmas.domain.discount.ChristmasDiscountEvent;
 import christmas.domain.discount.WeekdayDiscountEvent;
+import christmas.domain.discount.WeekendDiscountEvent;
 import christmas.repository.ChristmasDateOfVisitRepository;
 import christmas.repository.ChristmasOrderMenuRepository;
 
@@ -48,7 +49,12 @@ public class ChristmasService {
         WeekdayDiscountEvent weekdayDiscountEvent = new WeekdayDiscountEvent();
         int dateOfVisit = repository.findDateOfVisit();
         int dessertCount = christmasOrderMenuRepository.findDessertCount();
-        weekdayDiscountEvent.discountAmount(dateOfVisit, dessertCount);
+        return weekdayDiscountEvent.discountAmount(dateOfVisit, dessertCount);
+    }
 
+    public int getWeekendDiscountAmount() {
+        WeekendDiscountEvent weekendDiscountEvent = new WeekendDiscountEvent();
+        int dateOfVisit = repository.findDateOfVisit();
+        christmasOrderMenuRepository.findMainCount();
     }
 }

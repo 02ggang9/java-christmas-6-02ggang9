@@ -43,7 +43,12 @@ public class ChristmasController {
 
         // STEP 7 : 혜택 내역 출력
         int christmasDiscountAmount = getChristmasDiscountAmount();
-        getWeekdayDiscountAmount();
+        int weekdayDiscountAmount = getWeekdayDiscountAmount();
+        getWeekendDiscountAmount();
+    }
+
+    private int getWeekendDiscountAmount() {
+        return christmasService.getWeekendDiscountAmount();
     }
 
     private int getWeekdayDiscountAmount() {
