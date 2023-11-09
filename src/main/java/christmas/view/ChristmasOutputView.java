@@ -1,5 +1,6 @@
 package christmas.view;
 
+import java.text.DecimalFormat;
 import java.util.Map;
 import java.util.Set;
 
@@ -18,9 +19,11 @@ public class ChristmasOutputView {
     }
 
     public void printTotalAmountBeforeDiscount(Integer amountBeforeDiscount) {
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
+
         System.out.println();
         System.out.println("<할인 전 총주문 금액>");
 
-        System.out.println(amountBeforeDiscount + "원");
+        System.out.println(formatter.format(amountBeforeDiscount) + "원");
     }
 }
