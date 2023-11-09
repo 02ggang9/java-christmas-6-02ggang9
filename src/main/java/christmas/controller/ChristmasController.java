@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.repository.ChristmasOrderMenuRepository;
 import christmas.service.ChristmasService;
 import christmas.view.ChristmasInputView;
+import christmas.view.ChristmasOutputView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,6 +12,7 @@ import java.util.List;
 public class ChristmasController {
 
     private final ChristmasInputView christmasInputView = new ChristmasInputView();
+    private final ChristmasOutputView christmasOutputView = new ChristmasOutputView();
     private final ChristmasService christmasService = new ChristmasService();
     private final ChristmasOrderMenuRepository christmasOrderMenuRepository = new ChristmasOrderMenuRepository();
 
@@ -23,6 +25,13 @@ public class ChristmasController {
         List<String> orderMenuAndCount = getOrderMenuAndCount();
         saveOrderMenu(orderMenuAndCount);
 //        saveOrderMenuCount(orderMenuAndCount);
+
+        // STEP3 : 이벤트 혜택 미리 보기 안내 메시지 출력
+        printEventInformationMessage();
+    }
+
+    private void printEventInformationMessage() {
+        christmasOutputView.printEventInformation();
     }
 
 //    private void saveOrderMenuCount(List<String> orderMenuAndCount) {
