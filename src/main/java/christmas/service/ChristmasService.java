@@ -10,4 +10,8 @@ public class ChristmasService {
         repository.saveDateOfVisit(dateOfVisit);
     }
 
+    public Integer calculateTotalAmount() {
+
+
+    }
 }
