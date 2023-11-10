@@ -21,9 +21,7 @@ public class ChristmasController {
         getDateOfVisitAndSave();
 
         // STEP2 : 주문할 메뉴와 개수 입력 받고 저장
-        OrderSheet orderSheet = getOrderSheet();
-        saveOrderMenu(orderMenuAndCount);
-//        saveOrderMenuCount(orderMenuAndCount);
+        getOrderMenusAndSave();
 
         // STEP3 : 이벤트 혜택 미리 보기 안내 메시지 출력
         printEventInformationMessage();
@@ -58,6 +56,11 @@ public class ChristmasController {
 
         // STEP 10 : 이벤트 배지 출력
         printEventBadge(totalDiscountAmount);
+    }
+
+    private void getOrderMenusAndSave() {
+        OrderSheet orderSheet = getOrderSheet();
+        saveOrderMenu(orderSheet);
     }
 
     private void getDateOfVisitAndSave() {
@@ -132,15 +135,6 @@ public class ChristmasController {
     private void printEventInformationMessage() {
         christmasOutputView.printEventInformation();
     }
-
-//    private void saveOrderMenuCount(List<String> orderMenuAndCount) {
-//        List<String> strings = new ArrayList<>();
-//        for (String s : orderMenuAndCount) {
-//            String[] split = s.split("-");
-//            strings.add(split[1]);
-//        }
-//
-//    }
 
     private void saveOrderMenu(OrderSheet orderSheet) {
         christmasOrderMenuRepository.saveOrderSheet(orderSheet);
