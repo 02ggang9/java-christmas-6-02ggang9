@@ -36,13 +36,14 @@ public class ChristmasOutputView {
 
     public void printGiveMenu(GiveMenu giveMenu) {
         System.out.println();
-        System.out.println("<증정 메뉴>");
+        System.out.println(GIVE_MENU.getMessage());
+
         if (giveMenu == GiveMenu.NOTING) {
-            System.out.println("없음");
+            System.out.println(giveMenu.getGiveMenuName());
             return;
         }
 
-        System.out.println("샴페인 1개");
+        System.out.println(giveMenu.getGiveMenuName() + "1개");
     }
 
     public void printBenefitDetails(int totalCount, int christmasDiscountAmount, int weekdayDiscountAmount, int weekendDiscountAmount, int specialDiscountAmount, int giveDiscountAmount) {

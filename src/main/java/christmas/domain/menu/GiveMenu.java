@@ -7,7 +7,7 @@ import java.util.function.Function;
 public enum GiveMenu {
 
     CHAMPAGNE("샴페인", 120_000L, (amount) -> amount > 120_000L),
-    NOTING("낫띵", 0L, (amount) -> amount > 0L),
+    NOTING("없음", 0L, (amount) -> amount > 0L),
     ;
 
     private final String giveMenuName;
