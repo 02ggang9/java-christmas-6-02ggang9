@@ -1,6 +1,7 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import christmas.domain.OrderSheet;
 import christmas.domain.menu.OrderMenu;
 import christmas.global.InputMessage;
 
@@ -40,7 +41,7 @@ public class ChristmasInputView {
         throw new IllegalArgumentException();
     }
 
-    public List<String> getUserOrderMenu() {
+    public OrderSheet getUserOrderMenu() {
         System.out.println(ORDER_MENU_AND_COUNT.getMessage());
 
         while (true) {
@@ -51,7 +52,7 @@ public class ChristmasInputView {
                 List<Integer> counts = getCounts(menuAndCount);
                 checkValidation(menus, counts);
 
-
+                return new OrderSheet(menus, counts);
             } catch (IllegalArgumentException e) {
                 System.out.println(INVALID_ORDER.getMessage());
             }

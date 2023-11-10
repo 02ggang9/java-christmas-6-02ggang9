@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.OrderSheet;
 import christmas.domain.menu.GiveMenu;
 import christmas.repository.ChristmasOrderMenuRepository;
 import christmas.service.ChristmasService;
@@ -20,7 +21,7 @@ public class ChristmasController {
         getDateOfVisitAndSave();
 
         // STEP2 : 주문할 메뉴와 개수 입력 받고 저장
-        List<String> orderMenuAndCount = getOrderMenuAndCount();
+        OrderSheet orderSheet = getOrderSheet();
         saveOrderMenu(orderMenuAndCount);
 //        saveOrderMenuCount(orderMenuAndCount);
 
@@ -157,7 +158,7 @@ public class ChristmasController {
         christmasOrderMenuRepository.saveOrderMenus(orderMenus, orderMenusCounts);
     }
 
-    private List<String> getOrderMenuAndCount() {
+    private OrderSheet getOrderSheet() {
         return christmasInputView.getUserOrderMenu();
     }
 
