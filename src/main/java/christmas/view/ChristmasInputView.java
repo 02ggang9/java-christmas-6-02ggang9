@@ -56,9 +56,6 @@ public class ChristmasInputView {
                 System.out.println(INVALID_ORDER.getMessage());
             }
         }
-
-
-
     }
 
     private void checkValidation(List<String> menus, List<Integer> counts) {
