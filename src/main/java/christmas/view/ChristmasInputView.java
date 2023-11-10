@@ -1,28 +1,43 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import christmas.global.InputMessage;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
+
+import static christmas.global.InputMessage.*;
 
 public class ChristmasInputView {
 
     public int getUserDateOfVisit() {
-        System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.\n" +
-                "12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
-
+        System.out.println(ORDER_DATE_OF_VISIT.getMessage());
 
         // TODO : 예외처리
+        // 숫자인지만 확인
         while (true) {
             String expectedVisitDate = Console.readLine();
 
             try {
+                checkDateOfVisitValidation(expectedVisitDate);
                 return Integer.parseInt(expectedVisitDate);
             } catch (NumberFormatException e) {
                 System.out.println("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
             }
 
         }
+    }
+
+    private String checkDateOfVisitValidation(String expectedVisitDate) {
+        String regex = "(?:[1-9]|1[0-9]|2[0-9]|3[01])";
+        Pattern pattern = Pattern.compile(regex);
+
+        if (pattern.matcher(expectedVisitDate).matches()) {
+            return expectedVisitDate;
+        }
+
+        throw new IllegalArgumentException();
     }
 
     public List<String> getUserOrderMenu() {
