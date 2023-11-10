@@ -129,11 +129,7 @@ public class ChristmasOutputView {
     public void printOrderMenusAndCounts(OrderSheet orderSheet) {
         System.out.println();
         System.out.println(ORDER_MENU.getMessage());
-
-        Map<OrderMenu, Integer> orders = orderSheet.getOrders();
-
-        for (Map.Entry<OrderMenu, Integer> orderMenuIntegerEntry : orders.entrySet()) {
-            System.out.println(orderMenuIntegerEntry.getKey() + " " + orderMenuIntegerEntry.getValue() + "개");
-        }
+        orderSheet.getOrders()
+                .forEach((key, value) -> System.out.println(key.getMenuName() + " " + value + "개"));
     }
 }

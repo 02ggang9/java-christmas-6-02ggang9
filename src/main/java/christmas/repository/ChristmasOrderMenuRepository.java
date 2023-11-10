@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class ChristmasOrderMenuRepository {
 
-    private final Map<Long, OrderSheet> orderSheetDatabase = new HashMap<>();
+    private static final Map<Long, OrderSheet> orderSheetDatabase = new HashMap<>();
     private final Map<String, Integer> orderMenuDatabase = new HashMap<>();
 
     private static Long orderSheetId = 0L;
@@ -59,7 +59,7 @@ public class ChristmasOrderMenuRepository {
         orderSheetId++;
     }
 
-    public OrderSheet findOrderSheetById(Long orderSheetId) {
-        return orderSheetDatabase.get(orderSheetId);
+    public OrderSheet findOrderSheetById(Long id) {
+        return orderSheetDatabase.get(id);
     }
 }
