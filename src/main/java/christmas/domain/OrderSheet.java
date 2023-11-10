@@ -15,4 +15,8 @@ public class OrderSheet {
         IntStream.range(0, menus.size())
                 .forEach(i -> orders.put(OrderMenu.fromMenuName(menus.get(i)), counts.get(i)));
     }
+
+    public Map<OrderMenu, Integer> getOrders() {
+        return orders;
+    }
 }

@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.domain.OrderSheet;
 import christmas.domain.menu.GiveMenu;
 import christmas.domain.menu.OrderMenu;
 import christmas.domain.discount.ChristmasDiscountEvent;
@@ -62,5 +63,9 @@ public class ChristmasService {
         SpecialDiscountEvent specialDiscountEvent = new SpecialDiscountEvent();
         int dateOfVisit = repository.findDateOfVisit();
         return specialDiscountEvent.discountAmount(dateOfVisit);
+    }
+
+    public OrderSheet findOrderSheet() {
+        return christmasOrderMenuRepository.findOrderSheetById(0L);
     }
 }

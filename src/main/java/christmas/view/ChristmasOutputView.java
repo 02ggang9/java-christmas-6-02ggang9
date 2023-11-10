@@ -1,6 +1,8 @@
 package christmas.view;
 
+import christmas.domain.OrderSheet;
 import christmas.domain.menu.GiveMenu;
+import christmas.domain.menu.OrderMenu;
 import christmas.global.OutputMessage;
 
 import java.text.DecimalFormat;
@@ -15,13 +17,13 @@ public class ChristmasOutputView {
         System.out.println(EVENT_PREVIEW.getMessage());
     }
 
-    public void printOrderMenuAndCounts(Set<Map.Entry<String, Integer>> orderMenus) {
-        System.out.println();
-        System.out.println("<주문 메뉴>");
-        for (Map.Entry<String, Integer> orderMenu : orderMenus) {
-            System.out.println(orderMenu.getKey() + " " + orderMenu.getValue());
-        }
-    }
+//    public void printOrderMenuAndCounts(Set<Map.Entry<String, Integer>> orderMenus) {
+//        System.out.println();
+//        System.out.println("<주문 메뉴>");
+//        for (Map.Entry<String, Integer> orderMenu : orderMenus) {
+//            System.out.println(orderMenu.getKey() + " " + orderMenu.getValue());
+//        }
+//    }
 
     public void printTotalAmountBeforeDiscount(Integer amountBeforeDiscount) {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
@@ -122,5 +124,16 @@ public class ChristmasOutputView {
         }
 
 
+    }
+
+    public void printOrderMenusAndCounts(OrderSheet orderSheet) {
+        System.out.println();
+        System.out.println(ORDER_MENU.getMessage());
+
+        Map<OrderMenu, Integer> orders = orderSheet.getOrders();
+
+        for (Map.Entry<OrderMenu, Integer> orderMenuIntegerEntry : orders.entrySet()) {
+            System.out.println(orderMenuIntegerEntry.getKey() + " " + orderMenuIntegerEntry.getValue() + "개");
+        }
     }
 }
