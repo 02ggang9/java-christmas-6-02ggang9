@@ -27,7 +27,7 @@ public class ChristmasController {
         printEventInformationMessage();
 
         // STEP4 : 사용자가 주문한 메뉴와 개수 출력
-        Set<Map.Entry<String, Integer>> orderMenus = getOrderMenus();
+//        Set<Map.Entry<String, Integer>> orderMenus = getOrderMenus();
 //        printOrderMenuAndCounts(orderMenus);
         printOrderMenusAndCounts(findOrderSheet());
 

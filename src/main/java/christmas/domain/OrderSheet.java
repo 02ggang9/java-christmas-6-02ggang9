@@ -16,6 +16,17 @@ public class OrderSheet {
                 .forEach(i -> orders.put(OrderMenu.fromMenuName(menus.get(i)), counts.get(i)));
     }
 
+    public Integer calculateTotalPrice() {
+        int totalPrice = 0;
+        for (Map.Entry<OrderMenu, Integer> entry : orders.entrySet()) {
+            totalPrice = entry.getKey().calculatePrice(entry.getValue());
+        }
+
+        return totalPrice;
+//        orders.entrySet()
+//                .forEach((key, value) -> key.getKey().calculatePrice(value));
+    }
+
     public Map<OrderMenu, Integer> getOrders() {
         return orders;
     }
