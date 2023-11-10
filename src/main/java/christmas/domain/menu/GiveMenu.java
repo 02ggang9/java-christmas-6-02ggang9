@@ -1,5 +1,7 @@
 package christmas.domain.menu;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Function;
 
 public enum GiveMenu {
@@ -30,8 +32,15 @@ public enum GiveMenu {
         return function;
     }
 
-    public boolean isOver(Integer amount) {
-        return function.apply(amount);
+//    public boolean isOver(Integer amount) {
+//        return function.apply(amount);
+//    }
+
+    public static GiveMenu getGiveMenu(Integer totalPrice) {
+        return Arrays.stream(GiveMenu.values())
+                .filter(giveMenu -> giveMenu.function.apply(totalPrice))
+                .findFirst()
+                .orElse(NOTING);
     }
 
 //    public boolean isOverGiveMenuPrice(GiveMenu giveMenu) {

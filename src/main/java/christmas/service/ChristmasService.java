@@ -37,12 +37,16 @@ public class ChristmasService {
         return findOrderSheet.calculateTotalPrice();
     }
 
-    public GiveMenu getGiveMenu(Integer amount) {
-        if (GiveMenu.CHAMPAGNE.isOver(amount)) {
-            return GiveMenu.CHAMPAGNE;
-        }
+//    public GiveMenu getGiveMenu(Integer amount) {
+//        if (GiveMenu.CHAMPAGNE.isOver(amount)) {
+//            return GiveMenu.CHAMPAGNE;
+//        }
+//
+//        return GiveMenu.NOTING;
+//    }
 
-        return GiveMenu.NOTING;
+    public GiveMenu getGiveMenu(Integer price) {
+        return GiveMenu.getGiveMenu(price);
     }
 
     public int getChristmasDiscountAmount() {
