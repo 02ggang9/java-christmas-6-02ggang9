@@ -22,14 +22,19 @@ public class ChristmasService {
         repository.saveDateOfVisit(dateOfVisit);
     }
 
-    public Integer calculateTotalAmount(Set<Map.Entry<String, Integer>> orderMenus) {
-        int totalAmount = 0;
-        for (Map.Entry<String, Integer> orderMenu : orderMenus) {
-            OrderMenu menu = OrderMenu.getOrderMenu(orderMenu.getKey());
-            totalAmount += (orderMenu.getValue() * menu.getMenuPrice());
-        }
+//    public Integer calculateTotalAmount(Set<Map.Entry<String, Integer>> orderMenus) {
+//        int totalAmount = 0;
+//        for (Map.Entry<String, Integer> orderMenu : orderMenus) {
+//            OrderMenu menu = OrderMenu.getOrderMenu(orderMenu.getKey());
+//            totalAmount += (orderMenu.getValue() * menu.getMenuPrice());
+//        }
+//
+//        return totalAmount;
+//    }
 
-        return totalAmount;
+    public Integer calculateTotalAmount() {
+        OrderSheet findOrderSheet = christmasOrderMenuRepository.findOrderSheetById(0L);
+        return findOrderSheet.calculateTotalPrice();
     }
 
     public GiveMenu getGiveMenu(Integer amount) {

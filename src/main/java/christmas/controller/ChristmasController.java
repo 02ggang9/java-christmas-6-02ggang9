@@ -32,8 +32,9 @@ public class ChristmasController {
         printOrderMenusAndCounts(findOrderSheet());
 
         // STEP5 : 할인 전 총 주문 금액 출력
-        Integer amountBeforeDiscount = getAmountBeforeDiscount(orderMenus);
-        printTotalAmountBeforeDiscount(amountBeforeDiscount);
+//        Integer amountBeforeDiscount = getAmountBeforeDiscount(orderMenus);
+//        printTotalAmountBeforeDiscount(amountBeforeDiscount);
+        printTotalAmountBeforeDiscount(getAmountBeforeDiscount());
 
         // STEP6 : 증정 메뉴 출력
         GiveMenu giveMenu = getGiveMenu(amountBeforeDiscount);
@@ -129,9 +130,14 @@ public class ChristmasController {
         christmasOutputView.printTotalAmountBeforeDiscount(amountBeforeDiscount);
     }
 
-    private Integer getAmountBeforeDiscount(Set<Map.Entry<String, Integer>> orderMenus) {
-        return christmasService.calculateTotalAmount(orderMenus);
+//    private Integer getAmountBeforeDiscount(Set<Map.Entry<String, Integer>> orderMenus) {
+//        return christmasService.calculateTotalAmount(orderMenus);
+//    }
+
+    private Integer getAmountBeforeDiscount() {
+        return christmasService.calculateTotalAmount();
     }
+
 
 //    private void printOrderMenuAndCounts(Set<Map.Entry<String, Integer>> orderMenus) {
 //        christmasOutputView.printOrderMenuAndCounts(orderMenus);

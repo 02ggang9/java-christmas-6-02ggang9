@@ -54,7 +54,7 @@ public enum OrderMenu {
     }
 
     public Integer calculatePrice(int count) {
-        this.function.apply(count);
+        return this.function.apply(count);
     }
 
     public static OrderMenu getOrderMenu(String orderName) {
