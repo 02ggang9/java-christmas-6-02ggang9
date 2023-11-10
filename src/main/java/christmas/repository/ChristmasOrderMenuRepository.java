@@ -58,4 +58,8 @@ public class ChristmasOrderMenuRepository {
         orderSheetDatabase.put(orderSheetId, orderSheet);
         orderSheetId++;
     }
+
+    public OrderSheet findOrderSheetById(Long orderSheetId) {
+        return orderSheetDatabase.get(orderSheetId);
+    }
 }
