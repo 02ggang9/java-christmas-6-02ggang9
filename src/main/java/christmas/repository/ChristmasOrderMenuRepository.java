@@ -1,5 +1,7 @@
 package christmas.repository;
 
+import christmas.domain.OrderSheet;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,7 +9,10 @@ import java.util.Set;
 
 public class ChristmasOrderMenuRepository {
 
+    private final Map<Long, OrderSheet> orderSheetDatabase = new HashMap<>();
     private final Map<String, Integer> orderMenuDatabase = new HashMap<>();
+
+    private static Long orderSheetId = 0L;
 
     public void saveOrderMenus(List<String> orderMenus, List<String> orderMenusCounts) {
 
@@ -47,5 +52,10 @@ public class ChristmasOrderMenuRepository {
             }
         }
         return result;
+    }
+
+    public void saveOrderSheet(OrderSheet orderSheet) {
+        orderSheetDatabase.put(orderSheetId, orderSheet);
+        orderSheetId++;
     }
 }

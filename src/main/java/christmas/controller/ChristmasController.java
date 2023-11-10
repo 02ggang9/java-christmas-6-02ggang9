@@ -142,20 +142,9 @@ public class ChristmasController {
 //
 //    }
 
-    private void saveOrderMenu(List<String> orderMenuAndCount) {
-        List<String> orderMenus = new ArrayList<>();
-        for (String s : orderMenuAndCount) {
-            String[] split = s.split("-");
-            orderMenus.add(split[0]);
-        }
-
-        List<String> orderMenusCounts = new ArrayList<>();
-        for (String s : orderMenuAndCount) {
-            String[] split = s.split("-");
-            orderMenusCounts.add(split[1]);
-        }
-
-        christmasOrderMenuRepository.saveOrderMenus(orderMenus, orderMenusCounts);
+    private void saveOrderMenu(OrderSheet orderSheet) {
+        christmasOrderMenuRepository.saveOrderSheet(orderSheet);
+//        christmasOrderMenuRepository.saveOrderMenus(orderMenus, orderMenusCounts);
     }
 
     private OrderSheet getOrderSheet() {
