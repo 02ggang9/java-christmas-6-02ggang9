@@ -5,6 +5,7 @@ import christmas.domain.menu.OrderMenu;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import static christmas.global.ErrorMessage.*;
@@ -57,9 +58,9 @@ public class ChristmasInputView {
                 checkOrderCountsIsValid(counts);
 
                 // 4. 중복 메뉴를 입력한 경우
-
-                return Arrays.stream(menuAndCount.split(","))
-                        .toList();
+                checkDuplicateMenu(menus);
+//                return Arrays.stream(menuAndCount.split(","))
+//                        .toList();
 
             } catch (IllegalArgumentException e) {
 
@@ -68,6 +69,14 @@ public class ChristmasInputView {
 
 
 
+    }
+
+    private void checkDuplicateMenu(List<String> menus) {
+        if (menus.size() != Set.of(menus).size()) {
+            return;
+        }
+
+        throw new IllegalArgumentException();
     }
 
     private void checkOrderCountsIsValid(List<Integer> counts) {
