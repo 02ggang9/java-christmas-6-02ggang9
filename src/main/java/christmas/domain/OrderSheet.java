@@ -19,7 +19,7 @@ public class OrderSheet {
     public Integer calculateTotalPrice() {
         int totalPrice = 0;
         for (Map.Entry<OrderMenu, Integer> entry : orders.entrySet()) {
-            totalPrice = entry.getKey().calculatePrice(entry.getValue());
+            totalPrice += entry.getKey().calculatePrice(entry.getValue());
         }
 
         return totalPrice;

@@ -29,7 +29,7 @@ public class ChristmasOutputView {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
 
         System.out.println();
-        System.out.println("<할인 전 총주문 금액>");
+        System.out.println(TOTAL_PRICE_BEFORE_DISCOUNT.getMessage());
 
         System.out.println(formatter.format(amountBeforeDiscount) + "원");
     }

@@ -37,7 +37,7 @@ public class ChristmasController {
         printTotalAmountBeforeDiscount(getAmountBeforeDiscount());
 
         // STEP6 : 증정 메뉴 출력
-        GiveMenu giveMenu = getGiveMenu(amountBeforeDiscount);
+        GiveMenu giveMenu = getGiveMenu(10);
         printGiveMenu(giveMenu);
 
         // STEP 7 : 혜택 내역 출력
@@ -54,7 +54,7 @@ public class ChristmasController {
         printTotalDiscountAmount(totalDiscountAmount);
 
         // STEP 9 : 할인 후 예상 결제 금액 출력
-        printAfterDiscountAmount(amountBeforeDiscount - totalDiscountAmount);
+        printAfterDiscountAmount(10 - totalDiscountAmount);
 
         // STEP 10 : 이벤트 배지 출력
         printEventBadge(totalDiscountAmount);
