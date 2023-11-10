@@ -1,10 +1,9 @@
 package christmas.view;
 
-import christmas.domain.GiveMenu;
+import christmas.domain.menu.GiveMenu;
 
 import java.text.DecimalFormat;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 
 public class ChristmasOutputView {

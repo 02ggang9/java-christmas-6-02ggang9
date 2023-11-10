@@ -1,7 +1,7 @@
 package christmas.service;
 
-import christmas.domain.GiveMenu;
-import christmas.domain.OrderMenu;
+import christmas.domain.menu.GiveMenu;
+import christmas.domain.menu.OrderMenu;
 import christmas.domain.discount.ChristmasDiscountEvent;
 import christmas.domain.discount.SpecialDiscountEvent;
 import christmas.domain.discount.WeekdayDiscountEvent;
@@ -9,9 +9,7 @@ import christmas.domain.discount.WeekendDiscountEvent;
 import christmas.repository.ChristmasDateOfVisitRepository;
 import christmas.repository.ChristmasOrderMenuRepository;
 
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 
 public class ChristmasService {

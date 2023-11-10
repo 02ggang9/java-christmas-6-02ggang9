@@ -1,12 +1,11 @@
 package christmas.controller;
 
-import christmas.domain.GiveMenu;
+import christmas.domain.menu.GiveMenu;
 import christmas.repository.ChristmasOrderMenuRepository;
 import christmas.service.ChristmasService;
 import christmas.view.ChristmasInputView;
 import christmas.view.ChristmasOutputView;
 
-import javax.swing.text.html.Option;
 import java.util.*;
 
 public class ChristmasController {
@@ -18,8 +17,7 @@ public class ChristmasController {
 
     public void run() {
         // STEP1 : 예상 방문 날짜 입력받고 저장
-        int dateOfVisit = getDateOfVisit();
-        saveDateOfVisit(dateOfVisit);
+        getDateOfVisitAndSave();
 
         // STEP2 : 주문할 메뉴와 개수 입력 받고 저장
         List<String> orderMenuAndCount = getOrderMenuAndCount();
@@ -59,6 +57,11 @@ public class ChristmasController {
 
         // STEP 10 : 이벤트 배지 출력
         printEventBadge(totalDiscountAmount);
+    }
+
+    private void getDateOfVisitAndSave() {
+        int dateOfVisit = getDateOfVisit();
+        saveDateOfVisit(dateOfVisit);
     }
 
     private void printEventBadge(int totalDiscountAmount) {

@@ -1,8 +1,7 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.global.ErrorMessage;
-import christmas.global.InputMessage;
+import christmas.domain.menu.OrderMenu;
 
 import java.util.Arrays;
 import java.util.List;
@@ -44,7 +43,19 @@ public class ChristmasInputView {
 
         String menuAndCount = Console.readLine();
 
+        // 에외처리
+        // 1. 고객이 메뉴판에 없는 메뉴를 입력
+        checkOrderMenuIsValid(menuAndCount);
+
+        // 2. 메뉴의 개수는 1 이상
+        // 3. 메뉴의 형식이 예시와 다른 경우
+        // 4. 중복 메뉴를 입력한 경우
+
         return Arrays.stream(menuAndCount.split(","))
                 .toList();
+    }
+
+    private void checkOrderMenuIsValid(String menuAndCount) {
+        OrderMenu.values()
     }
 }
