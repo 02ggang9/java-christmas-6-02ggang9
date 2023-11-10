@@ -2,6 +2,7 @@ package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.domain.menu.OrderMenu;
+import christmas.global.InputMessage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,35 +41,30 @@ public class ChristmasInputView {
     }
 
     public List<String> getUserOrderMenu() {
-        System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
+        System.out.println(ORDER_MENU_AND_COUNT.getMessage());
 
         while (true) {
-
             try {
                 String menuAndCount = Console.readLine();
 
-                // [ERROR] 메뉴의 형식이 예시와 다른 경우
                 List<String> menus = getMenus(menuAndCount);
                 List<Integer> counts = getCounts(menuAndCount);
+                checkValidation(menus, counts);
 
-                // 1. 고객이 메뉴판에 없는 메뉴를 입력
-                checkOrderMenuIsValid(menus);
-
-                // 2. 메뉴의 개수는 1 이상
-                checkOrderCountsIsValid(counts);
-
-                // 4. 중복 메뉴를 입력한 경우
-                checkDuplicateMenu(menus);
-//                return Arrays.stream(menuAndCount.split(","))
-//                        .toList();
 
             } catch (IllegalArgumentException e) {
-
+                System.out.println(INVALID_ORDER.getMessage());
             }
         }
 
 
 
+    }
+
+    private void checkValidation(List<String> menus, List<Integer> counts) {
+        checkOrderMenuIsValid(menus);
+        checkOrderCountsIsValid(counts);
+        checkDuplicateMenu(menus);
     }
 
     private void checkDuplicateMenu(List<String> menus) {
