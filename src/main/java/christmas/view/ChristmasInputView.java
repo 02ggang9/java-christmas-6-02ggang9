@@ -41,21 +41,73 @@ public class ChristmasInputView {
     public List<String> getUserOrderMenu() {
         System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
 
-        String menuAndCount = Console.readLine();
+        while (true) {
 
-        // 에외처리
-        // 1. 고객이 메뉴판에 없는 메뉴를 입력
-        checkOrderMenuIsValid(menuAndCount);
+            try {
+                String menuAndCount = Console.readLine();
 
-        // 2. 메뉴의 개수는 1 이상
-        // 3. 메뉴의 형식이 예시와 다른 경우
-        // 4. 중복 메뉴를 입력한 경우
+                // [ERROR] 메뉴의 형식이 예시와 다른 경우
+                List<String> menus = getMenus(menuAndCount);
+                List<Integer> counts = getCounts(menuAndCount);
 
-        return Arrays.stream(menuAndCount.split(","))
-                .toList();
+                // 1. 고객이 메뉴판에 없는 메뉴를 입력
+                checkOrderMenuIsValid(menus);
+
+                // 2. 메뉴의 개수는 1 이상
+                checkOrderCountsIsValid(counts);
+
+                // 4. 중복 메뉴를 입력한 경우
+
+                return Arrays.stream(menuAndCount.split(","))
+                        .toList();
+
+            } catch (IllegalArgumentException e) {
+
+            }
+        }
+
+
+
     }
 
-    private void checkOrderMenuIsValid(String menuAndCount) {
-        OrderMenu.values()
+    private void checkOrderCountsIsValid(List<Integer> counts) {
+        counts.forEach(this::checkCountValid);
+    }
+
+    private void checkCountValid(Integer count) {
+        if (count > 0) {
+            return;
+        }
+
+        throw new IllegalArgumentException();
+    }
+
+    private List<String> getMenus(String menuAndCount) {
+        try {
+            return Arrays.stream(menuAndCount.split(","))
+                    .toList()
+                    .stream()
+                    .map(s -> s.split("-")[0])
+                    .toList();
+        } catch (RuntimeException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private List<Integer> getCounts(String menuAndCount) {
+        try {
+            return Arrays.stream(menuAndCount.split(","))
+                    .toList()
+                    .stream()
+                    .map(s -> s.split("-")[1])
+                    .map(Integer::parseInt)
+                    .toList();
+        } catch (RuntimeException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkOrderMenuIsValid(List<String> menus) {
+        menus.forEach(OrderMenu::fromMenuName);
     }
 }

@@ -1,6 +1,7 @@
 package christmas.domain.menu;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.function.Function;
 
 import static christmas.domain.menu.MenuType.*;
@@ -57,5 +58,12 @@ public enum OrderMenu {
                 .filter(orderMenu -> orderMenu.getMenuName().equals(orderName))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public static OrderMenu fromMenuName(String menuName) {
+        return Arrays.stream(OrderMenu.values())
+                .filter(orderMenu -> orderMenu.getMenuName().equals(menuName))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException());
     }
 }
