@@ -120,7 +120,7 @@ public class ChristmasOutputView {
             return;
         }
 
-        System.out.println(formatter.format(beforeDiscountPrice - benefitDetail.getTotalBenefitPrice()) + "원");
+        System.out.println(formatter.format(beforeDiscountPrice - benefitDetail.getTotalDiscountPrice()) + "원");
     }
 
     public void printEventBadge(Badge badge) {
