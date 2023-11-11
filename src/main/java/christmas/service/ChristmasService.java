@@ -49,10 +49,10 @@ public class ChristmasService {
         return GiveMenu.getGiveMenu(price);
     }
 
-    public int getChristmasDiscountAmount() {
-        int dateOfVisit = repository.findDateOfVisit();
-        return ChristmasDiscountEvent.discountAmount(dateOfVisit);
-    }
+//    public int getChristmasDiscountAmount() {
+//        int dateOfVisit = repository.findDateOfVisit();
+//        return ChristmasDiscountEvent.discountAmount(dateOfVisit);
+//    }
 
     public int getWeekdayDiscountAmount() {
         WeekdayDiscountEvent weekdayDiscountEvent = new WeekdayDiscountEvent();

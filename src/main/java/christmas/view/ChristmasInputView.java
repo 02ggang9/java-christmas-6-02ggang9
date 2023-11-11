@@ -41,7 +41,7 @@ public class ChristmasInputView {
         throw new IllegalArgumentException();
     }
 
-    public OrderSheet getUserOrderMenu() {
+    public OrderSheet getUserOrderMenu(int dateOfVisit) {
         System.out.println(ORDER_MENU_AND_COUNT.getMessage());
 
         while (true) {
@@ -52,7 +52,7 @@ public class ChristmasInputView {
                 List<Integer> counts = getCounts(menuAndCount);
                 checkValidation(menus, counts);
 
-                return new OrderSheet(menus, counts);
+                return new OrderSheet(menus, counts, dateOfVisit);
             } catch (IllegalArgumentException e) {
                 System.out.println(INVALID_ORDER.getMessage());
             }

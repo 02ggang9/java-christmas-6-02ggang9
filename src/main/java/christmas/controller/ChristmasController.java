@@ -18,10 +18,11 @@ public class ChristmasController {
 
     public void run() {
         // STEP1 : 예상 방문 날짜 입력받고 저장
-        getDateOfVisitAndSave();
+        int dateOfVisit = getDateOfVisit();
+        saveDateOfVisit(dateOfVisit);
 
         // STEP2 : 주문할 메뉴와 개수 입력 받고 저장
-        getOrderMenusAndSave();
+        getOrderMenusAndSave(dateOfVisit);
 
         // STEP3 : 이벤트 혜택 미리 보기 안내 메시지 출력
         printEventInformationMessage();
@@ -69,8 +70,8 @@ public class ChristmasController {
         return christmasService.findOrderSheet();
     }
 
-    private void getOrderMenusAndSave() {
-        OrderSheet orderSheet = getOrderSheet();
+    private void getOrderMenusAndSave(int dateOfVisit) {
+        OrderSheet orderSheet = getOrderSheet(dateOfVisit);
         saveOrderMenu(orderSheet);
     }
 
@@ -159,8 +160,8 @@ public class ChristmasController {
 //        christmasOrderMenuRepository.saveOrderMenus(orderMenus, orderMenusCounts);
     }
 
-    private OrderSheet getOrderSheet() {
-        return christmasInputView.getUserOrderMenu();
+    private OrderSheet getOrderSheet(int dateOfVisit) {
+        return christmasInputView.getUserOrderMenu(dateOfVisit);
     }
 
     private void saveDateOfVisit(int dateOfVisit) {

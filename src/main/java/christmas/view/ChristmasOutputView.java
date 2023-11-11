@@ -43,7 +43,7 @@ public class ChristmasOutputView {
             return;
         }
 
-        System.out.println(giveMenu.getGiveMenuName() + "1개");
+        System.out.println(giveMenu.getGiveMenuName() + " 1개");
     }
 
     public void printBenefitDetails(int totalCount, int christmasDiscountAmount, int weekdayDiscountAmount, int weekendDiscountAmount, int specialDiscountAmount, int giveDiscountAmount) {

@@ -10,8 +10,10 @@ import java.util.stream.IntStream;
 public class OrderSheet {
 
     private final Map<OrderMenu, Integer> orders = new HashMap<>();
+    private final int dateOfVisit;
 
-    public OrderSheet(List<String> menus, List<Integer> counts) {
+    public OrderSheet(List<String> menus, List<Integer> counts, int dateOfVisit) {
+        this.dateOfVisit = dateOfVisit;
         IntStream.range(0, menus.size())
                 .forEach(i -> orders.put(OrderMenu.fromMenuName(menus.get(i)), counts.get(i)));
     }
@@ -29,5 +31,9 @@ public class OrderSheet {
 
     public Map<OrderMenu, Integer> getOrders() {
         return orders;
+    }
+
+    public int getDateOfVisit() {
+        return dateOfVisit;
     }
 }
