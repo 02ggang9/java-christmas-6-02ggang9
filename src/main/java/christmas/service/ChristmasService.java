@@ -61,18 +61,18 @@ public class ChristmasService {
 //        return weekdayDiscountEvent.discountAmount(dateOfVisit, dessertCount);
 //    }
 
-    public int getWeekendDiscountAmount() {
-        WeekendDiscountEvent weekendDiscountEvent = new WeekendDiscountEvent();
-        int dateOfVisit = repository.findDateOfVisit();
-        int mainCount = christmasOrderMenuRepository.findMainCount();
-        return weekendDiscountEvent.discountAmount(dateOfVisit, mainCount);
-    }
+//    public int getWeekendDiscountAmount() {
+//        WeekendDiscountEvent weekendDiscountEvent = new WeekendDiscountEvent();
+//        int dateOfVisit = repository.findDateOfVisit();
+//        int mainCount = christmasOrderMenuRepository.findMainCount();
+//        return weekendDiscountEvent.discountAmount(dateOfVisit, mainCount);
+//    }
 
-    public int getSpecialDiscountAmount() {
-        SpecialDiscountEvent specialDiscountEvent = new SpecialDiscountEvent();
-        int dateOfVisit = repository.findDateOfVisit();
-        return specialDiscountEvent.discountAmount(dateOfVisit);
-    }
+//    public int getSpecialDiscountAmount() {
+//        SpecialDiscountEvent specialDiscountEvent = new SpecialDiscountEvent();
+//        int dateOfVisit = repository.findDateOfVisit();
+//        return specialDiscountEvent.discountAmount(dateOfVisit);
+//    }
 
     public OrderSheet findOrderSheet() {
         return christmasOrderMenuRepository.findOrderSheetById(0L);

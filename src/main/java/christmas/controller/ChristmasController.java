@@ -29,13 +29,9 @@ public class ChristmasController {
         printEventInformationMessage();
 
         // STEP4 : 사용자가 주문한 메뉴와 개수 출력
-//        Set<Map.Entry<String, Integer>> orderMenus = getOrderMenus();
-//        printOrderMenuAndCounts(orderMenus);
         printOrderMenusAndCounts(findOrderSheet());
 
         // STEP5 : 할인 전 총 주문 금액 출력
-//        Integer amountBeforeDiscount = getAmountBeforeDiscount(orderMenus);
-//        printTotalAmountBeforeDiscount(amountBeforeDiscount);
         Integer amountBeforeDiscount = getAmountBeforeDiscount();
         printTotalAmountBeforeDiscount(amountBeforeDiscount);
 
@@ -44,26 +40,18 @@ public class ChristmasController {
         printGiveMenu(giveMenu);
 
         // STEP 7 : 혜택 내역 출력
-//        int christmasDiscountAmount = getChristmasDiscountAmount();
-//        int weekdayDiscountAmount = getWeekdayDiscountAmount();
-//        int weekendDiscountAmount = getWeekendDiscountAmount();
-//        int specialDiscountAmount = getSpecialDiscountAmount();
-//        int giveDiscountAmount = getGiveDiscountAmount(giveMenu);
-//        int totalDiscountAmount = christmasDiscountAmount + weekdayDiscountAmount + weekendDiscountAmount + specialDiscountAmount + giveDiscountAmount;
-//
-//        printBenefitDetails(totalDiscountAmount, weekdayDiscountAmount, christmasDiscountAmount, weekendDiscountAmount, specialDiscountAmount, giveDiscountAmount);
-
-        printBenefitDetails(new EventDetail());
-
+        EventDetail eventDetail = new EventDetail();
+        printBenefitDetails(eventDetail);
 
         // STEP 8 : 총 혜택 금액 출력
-        printTotalDiscountAmount(totalDiscountAmount);
+        int totalDiscountPrice = eventDetail.getTotalDiscountPrice();
+        printTotalDiscountAmount(totalDiscountPrice);
 
         // STEP 9 : 할인 후 예상 결제 금액 출력
-        printAfterDiscountAmount(10 - totalDiscountAmount);
+        printAfterDiscountAmount(amountBeforeDiscount - totalDiscountPrice);
 
         // STEP 10 : 이벤트 배지 출력
-        printEventBadge(totalDiscountAmount);
+        printEventBadge(totalDiscountPrice);
     }
 
     private void printOrderMenusAndCounts(OrderSheet orderSheet) {
@@ -79,11 +67,6 @@ public class ChristmasController {
         saveOrderMenu(orderSheet);
     }
 
-    private void getDateOfVisitAndSave() {
-        int dateOfVisit = getDateOfVisit();
-        saveDateOfVisit(dateOfVisit);
-    }
-
     private void printEventBadge(int totalDiscountAmount) {
         christmasOutputView.printEventBadge(totalDiscountAmount);
     }
@@ -96,36 +79,8 @@ public class ChristmasController {
         christmasOutputView.totalDiscountAmount(totalDiscountAmount);
     }
 
-//    private void printBenefitDetails(int totalCount, int weekdayDiscountAmount, int christmasDiscountAmount, int weekendDiscountAmount, int specialDiscountAmount, int giveDiscountAmount) {
-//        christmasOutputView.printBenefitDetails(totalCount, christmasDiscountAmount, weekdayDiscountAmount, weekendDiscountAmount, specialDiscountAmount, giveDiscountAmount);
-//    }
-
     private void printBenefitDetails(EventDetail eventDetail) {
         christmasOutputView.printBenefitDetails(eventDetail);
-    }
-
-    private int getGiveDiscountAmount(GiveMenu giveMenu) {
-        if (giveMenu == GiveMenu.CHAMPAGNE) {
-            return 25000;
-        }
-
-        return 0;
-    }
-
-    private int getSpecialDiscountAmount() {
-        return christmasService.getSpecialDiscountAmount();
-    }
-
-    private int getWeekendDiscountAmount() {
-        return christmasService.getWeekendDiscountAmount();
-    }
-
-    private int getWeekdayDiscountAmount() {
-        return christmasService.getWeekdayDiscountAmount();
-    }
-
-    private int getChristmasDiscountAmount() {
-        return christmasService.getChristmasDiscountAmount();
     }
 
     private GiveMenu getGiveMenu(Integer amountBeforeDiscount) {
@@ -140,23 +95,8 @@ public class ChristmasController {
         christmasOutputView.printTotalAmountBeforeDiscount(amountBeforeDiscount);
     }
 
-//    private Integer getAmountBeforeDiscount(Set<Map.Entry<String, Integer>> orderMenus) {
-//        return christmasService.calculateTotalAmount(orderMenus);
-//    }
-
     private Integer getAmountBeforeDiscount() {
         return christmasService.calculateTotalAmount();
-    }
-
-
-//    private void printOrderMenuAndCounts(Set<Map.Entry<String, Integer>> orderMenus) {
-//        christmasOutputView.printOrderMenuAndCounts(orderMenus);
-//    }
-
-
-
-    private Set<Map.Entry<String, Integer>> getOrderMenus() {
-        return christmasOrderMenuRepository.findAllMenusAndCounts();
     }
 
     private void printEventInformationMessage() {
@@ -165,7 +105,6 @@ public class ChristmasController {
 
     private void saveOrderMenu(OrderSheet orderSheet) {
         christmasOrderMenuRepository.saveOrderSheet(orderSheet);
-//        christmasOrderMenuRepository.saveOrderMenus(orderMenus, orderMenusCounts);
     }
 
     private OrderSheet getOrderSheet(int dateOfVisit) {
