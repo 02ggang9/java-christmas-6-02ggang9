@@ -38,9 +38,6 @@ public class ChristmasController {
         benefitDetail.setEventGoods(amountBeforeDiscount);
         printGiveMenu(benefitDetail.getEvent());
 
-//        Event event = getGiveMenu(amountBeforeDiscount);
-//        printGiveMenu(event);
-
         // STEP 7 : 혜택 내역 출력
         benefitDetail.saveEventDetails(findOrderSheet);
         printBenefitDetails(benefitDetail);
@@ -83,10 +80,6 @@ public class ChristmasController {
 
     private void printBenefitDetails(BenefitDetail benefitDetail) {
         christmasOutputView.printBenefitDetails(benefitDetail);
-    }
-
-    private Event getGiveMenu(Integer amountBeforeDiscount) {
-        return christmasService.getGiveMenu(amountBeforeDiscount);
     }
 
     private void printGiveMenu(Event event) {
