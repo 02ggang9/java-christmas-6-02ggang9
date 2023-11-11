@@ -4,8 +4,10 @@ import christmas.domain.OrderSheet;
 import christmas.domain.discount.*;
 import christmas.domain.discountpolicy.*;
 import christmas.domain.event.GiveMenuDiscountEvent;
+import christmas.domain.event.GiveMenuDiscountPolicy;
 import christmas.domain.menu.Event;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,21 +16,20 @@ public class BenefitDetail {
 
     private static final List<Discount> discounts = List.of(
             new ChristmasDiscount(new ChristmasDiscountPolicy()),
-            new GiveMenuDiscountEvent(new GiveMenuDiscountPolicy()),
             new SpecialDiscount(new SpecialDiscountPolicy()),
             new WeekdayDiscount(new WeekdayDiscountPolicy()),
             new WeekendDiscount(new WeekendDiscountPolicy())
     );
 
     private final Map<String, Integer> details = new HashMap<>();
-    private final Event event = Event.NOTING;
+    private Event event = Event.NOTING;
 
     public BenefitDetail() {
     }
 
     public void saveEventDetails(OrderSheet orderSheet) {
-        for (Discount event : discounts) {
-            event.calculateDiscountAndSaveDetail(this, orderSheet);
+        for (Discount discount : discounts) {
+            discount.calculateDiscountAndSaveDetail(this, orderSheet);
         }
     }
 
@@ -49,5 +50,14 @@ public class BenefitDetail {
                 .stream()
                 .mapToInt(Integer::intValue)
                 .sum();
+    }
+
+    public Event setEventGoods(int beforeDiscountPrice) {
+        this.event = Arrays.stream(Event.values())
+                .filter(event -> event.getFunction().apply(beforeDiscountPrice))
+                .findFirst()
+                .orElse(Event.NOTING);
+
+        return this.event;
     }
 }

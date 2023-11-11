@@ -1,6 +1,7 @@
-package christmas.domain.discountpolicy;
+package christmas.domain.event;
 
 import christmas.domain.OrderSheet;
+import christmas.domain.discountpolicy.DiscountPolicy;
 
 public class GiveMenuDiscountPolicy implements DiscountPolicy {
     @Override

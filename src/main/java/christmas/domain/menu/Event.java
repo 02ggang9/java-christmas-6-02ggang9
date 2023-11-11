@@ -13,9 +13,9 @@ public enum Event {
     private final Long discountPrice;
     private final Function<Integer, Boolean> function;
 
-    Event(String giveMenuName, Long overPrice, Function<Integer, Boolean> function) {
+    Event(String giveMenuName, Long discountPrice, Function<Integer, Boolean> function) {
         this.giveMenuName = giveMenuName;
-        this.discountPrice = overPrice;
+        this.discountPrice = discountPrice;
         this.function = function;
     }
 

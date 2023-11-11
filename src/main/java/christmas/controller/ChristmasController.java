@@ -34,11 +34,14 @@ public class ChristmasController {
         printTotalAmountBeforeDiscount(amountBeforeDiscount);
 
         // STEP6 : 증정 메뉴 출력
-        Event event = getGiveMenu(amountBeforeDiscount);
-        printGiveMenu(event);
+        BenefitDetail benefitDetail = new BenefitDetail();
+        benefitDetail.setEventGoods(amountBeforeDiscount);
+        printGiveMenu(benefitDetail.getEvent());
+
+//        Event event = getGiveMenu(amountBeforeDiscount);
+//        printGiveMenu(event);
 
         // STEP 7 : 혜택 내역 출력
-        BenefitDetail benefitDetail = new BenefitDetail();
         benefitDetail.saveEventDetails(findOrderSheet);
         printBenefitDetails(benefitDetail);
 
