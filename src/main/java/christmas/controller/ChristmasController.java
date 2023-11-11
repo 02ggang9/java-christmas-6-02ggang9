@@ -2,13 +2,11 @@ package christmas.controller;
 
 import christmas.domain.OrderSheet;
 import christmas.domain.detail.EventDetail;
-import christmas.domain.menu.GiveMenu;
+import christmas.domain.menu.Event;
 import christmas.repository.ChristmasOrderMenuRepository;
 import christmas.service.ChristmasService;
 import christmas.view.ChristmasInputView;
 import christmas.view.ChristmasOutputView;
-
-import java.util.*;
 
 public class ChristmasController {
 
@@ -36,8 +34,8 @@ public class ChristmasController {
         printTotalAmountBeforeDiscount(amountBeforeDiscount);
 
         // STEP6 : 증정 메뉴 출력
-        GiveMenu giveMenu = getGiveMenu(amountBeforeDiscount);
-        printGiveMenu(giveMenu);
+        Event event = getGiveMenu(amountBeforeDiscount);
+        printGiveMenu(event);
 
         // STEP 7 : 혜택 내역 출력
         EventDetail eventDetail = new EventDetail();
@@ -84,12 +82,12 @@ public class ChristmasController {
         christmasOutputView.printBenefitDetails(eventDetail);
     }
 
-    private GiveMenu getGiveMenu(Integer amountBeforeDiscount) {
+    private Event getGiveMenu(Integer amountBeforeDiscount) {
         return christmasService.getGiveMenu(amountBeforeDiscount);
     }
 
-    private void printGiveMenu(GiveMenu giveMenu) {
-        christmasOutputView.printGiveMenu(giveMenu);
+    private void printGiveMenu(Event event) {
+        christmasOutputView.printGiveMenu(event);
     }
 
     private void printTotalAmountBeforeDiscount(Integer amountBeforeDiscount) {

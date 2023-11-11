@@ -2,13 +2,10 @@ package christmas.view;
 
 import christmas.domain.OrderSheet;
 import christmas.domain.detail.EventDetail;
-import christmas.domain.menu.GiveMenu;
-import christmas.domain.menu.OrderMenu;
-import christmas.global.OutputMessage;
+import christmas.domain.menu.Event;
 
 import java.text.DecimalFormat;
 import java.util.Map;
-import java.util.Set;
 
 import static christmas.global.OutputMessage.*;
 
@@ -35,16 +32,16 @@ public class ChristmasOutputView {
         System.out.println(formatter.format(amountBeforeDiscount) + "원");
     }
 
-    public void printGiveMenu(GiveMenu giveMenu) {
+    public void printGiveMenu(Event event) {
         System.out.println();
         System.out.println(GIVE_MENU.getMessage());
 
-        if (giveMenu == GiveMenu.NOTING) {
-            System.out.println(giveMenu.getGiveMenuName());
+        if (event == Event.NOTING) {
+            System.out.println(event.getGiveMenuName());
             return;
         }
 
-        System.out.println(giveMenu.getGiveMenuName() + " 1개");
+        System.out.println(event.getGiveMenuName() + " 1개");
     }
 
 //    public void printBenefitDetails(int totalCount, int christmasDiscountAmount, int weekdayDiscountAmount, int weekendDiscountAmount, int specialDiscountAmount, int giveDiscountAmount) {

@@ -1,7 +1,7 @@
 package christmas.service;
 
 import christmas.domain.OrderSheet;
-import christmas.domain.menu.GiveMenu;
+import christmas.domain.menu.Event;
 import christmas.repository.ChristmasOrderMenuRepository;
 
 
@@ -14,8 +14,8 @@ public class ChristmasService {
         return findOrderSheet.calculateTotalPrice();
     }
 
-    public GiveMenu getGiveMenu(Integer price) {
-        return GiveMenu.getGiveMenu(price);
+    public Event getGiveMenu(Integer price) {
+        return Event.getGiveMenu(price);
     }
 
     public OrderSheet findOrderSheet() {
