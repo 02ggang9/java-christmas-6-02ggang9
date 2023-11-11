@@ -4,12 +4,12 @@ import christmas.domain.OrderSheet;
 import christmas.domain.detail.BenefitDetail;
 import christmas.domain.discountpolicy.DiscountPolicy;
 
-public class ChristmasDiscountEvent extends Discount{
+public class ChristmasDiscount extends Discount{
 
     private static final Integer BASE_DISCOUNT_AMOUNT = 1000;
     private static final String DISCOUNT_NAME = "크리스마스 디데이 할인: -";
 
-    public ChristmasDiscountEvent(DiscountPolicy... policies) {
+    public ChristmasDiscount(DiscountPolicy... policies) {
         super(policies);
     }
 

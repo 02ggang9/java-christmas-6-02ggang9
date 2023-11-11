@@ -5,17 +5,17 @@ import java.util.function.Function;
 
 public enum Event {
 
-    CHAMPAGNE("샴페인", 120_000L, (amount) -> amount > 120_000L),
+    CHAMPAGNE("샴페인", 25_000L, (amount) -> amount > 120_000L),
     NOTING("없음", 0L, (amount) -> amount > 0L),
     ;
 
     private final String giveMenuName;
-    private final Long overPrice;
+    private final Long discountPrice;
     private final Function<Integer, Boolean> function;
 
     Event(String giveMenuName, Long overPrice, Function<Integer, Boolean> function) {
         this.giveMenuName = giveMenuName;
-        this.overPrice = overPrice;
+        this.discountPrice = overPrice;
         this.function = function;
     }
 
@@ -23,8 +23,8 @@ public enum Event {
         return giveMenuName;
     }
 
-    public Long getOverPrice() {
-        return overPrice;
+    public Long getDiscountPrice() {
+        return discountPrice;
     }
 
     public Function<Integer, Boolean> getFunction() {

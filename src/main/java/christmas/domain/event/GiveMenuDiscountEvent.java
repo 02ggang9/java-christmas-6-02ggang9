@@ -1,7 +1,8 @@
-package christmas.domain.discount;
+package christmas.domain.event;
 
 import christmas.domain.OrderSheet;
 import christmas.domain.detail.BenefitDetail;
+import christmas.domain.discount.Discount;
 import christmas.domain.discountpolicy.DiscountPolicy;
 
 public class GiveMenuDiscountEvent extends Discount {

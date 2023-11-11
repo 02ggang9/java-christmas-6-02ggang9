@@ -3,13 +3,16 @@ package christmas.domain.discount;
 import christmas.domain.OrderSheet;
 import christmas.domain.detail.BenefitDetail;
 import christmas.domain.discountpolicy.DiscountPolicy;
+import christmas.domain.menu.MenuType;
 
-public class SpecialDiscountEvent extends Discount {
+import java.util.Map;
 
-    private static final String DISCOUNT_NAME = "특별 할인: -";
-    private static final int BASE_DISCOUNT_AMOUNT = 1000;
+public class WeekendDiscount extends Discount {
 
-    public SpecialDiscountEvent(DiscountPolicy... policies) {
+    private static final String DISCOUNT_NAME = "주말 할인: -";
+    private static final int BASE_DISCOUNT_AMOUNT = 2023;
+
+    public WeekendDiscount(DiscountPolicy... policies) {
         super(policies);
     }
 
@@ -23,6 +26,11 @@ public class SpecialDiscountEvent extends Discount {
     }
 
     private int discountPrice(OrderSheet orderSheet) {
-        return BASE_DISCOUNT_AMOUNT;
+        return BASE_DISCOUNT_AMOUNT * orderSheet.getOrders()
+                .entrySet()
+                .stream()
+                .filter(o -> o.getKey().getMenuType() == MenuType.MAIN)
+                .mapToInt(Map.Entry::getValue)
+                .sum();
     }
 }
