@@ -112,10 +112,6 @@ public class ChristmasController {
         return christmasInputView.getUserOrderMenu(dateOfVisit);
     }
 
-    private void saveDateOfVisit(int dateOfVisit) {
-        christmasService.saveDateOfVisit(dateOfVisit);
-    }
-
     private int getDateOfVisit() {
         return christmasInputView.getUserDateOfVisit();
     }
