@@ -19,14 +19,10 @@ public class OrderSheet {
     }
 
     public Integer calculateTotalPrice() {
-        int totalPrice = 0;
-        for (Map.Entry<OrderMenu, Integer> entry : orders.entrySet()) {
-            totalPrice += entry.getKey().calculatePrice(entry.getValue());
-        }
-
-        return totalPrice;
-//        orders.entrySet()
-//                .forEach((key, value) -> key.getKey().calculatePrice(value));
+        return orders.entrySet()
+                .stream()
+                .mapToInt(entry -> entry.getKey().calculatePrice(entry.getValue()))
+                .sum();
     }
 
     public Map<OrderMenu, Integer> getOrders() {
