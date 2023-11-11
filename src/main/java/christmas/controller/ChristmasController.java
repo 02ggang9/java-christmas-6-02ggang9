@@ -20,7 +20,6 @@ public class ChristmasController {
     public void run() {
         // STEP1 : 예상 방문 날짜 입력받고 저장
         int dateOfVisit = getDateOfVisit();
-        saveDateOfVisit(dateOfVisit);
 
         // STEP2 : 주문할 메뉴와 개수 입력 받고 저장
         getOrderMenusAndSave(dateOfVisit);
@@ -29,7 +28,8 @@ public class ChristmasController {
         printEventInformationMessage();
 
         // STEP4 : 사용자가 주문한 메뉴와 개수 출력
-        printOrderMenusAndCounts(findOrderSheet());
+        OrderSheet findOrderSheet = findOrderSheet();
+        printOrderMenusAndCounts(findOrderSheet);
 
         // STEP5 : 할인 전 총 주문 금액 출력
         Integer amountBeforeDiscount = getAmountBeforeDiscount();
@@ -41,6 +41,7 @@ public class ChristmasController {
 
         // STEP 7 : 혜택 내역 출력
         EventDetail eventDetail = new EventDetail();
+        eventDetail.saveEventDetails(findOrderSheet);
         printBenefitDetails(eventDetail);
 
         // STEP 8 : 총 혜택 금액 출력

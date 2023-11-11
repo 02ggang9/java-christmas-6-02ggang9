@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public abstract class Discount {
-    protected List<DiscountPolicy> policies = new ArrayList<>();
+    protected List<DiscountPolicy> policies;
 
     public Discount(DiscountPolicy ... policies) {
         this.policies = Arrays.asList(policies);
