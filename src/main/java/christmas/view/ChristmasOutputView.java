@@ -1,7 +1,7 @@
 package christmas.view;
 
 import christmas.domain.OrderSheet;
-import christmas.domain.detail.EventDetail;
+import christmas.domain.detail.BenefitDetail;
 import christmas.domain.menu.Event;
 
 import java.text.DecimalFormat;
@@ -76,17 +76,17 @@ public class ChristmasOutputView {
 //
 //    }
 
-    public void printBenefitDetails(EventDetail eventDetail) {
+    public void printBenefitDetails(BenefitDetail benefitDetail) {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
 
         System.out.println();
         System.out.println(EVENT_DETAILS.getMessage());
 
-        if (eventDetail.getTotalDiscountPrice() < 10_000 || eventDetail.getDetails().isEmpty()) {
+        if (benefitDetail.getTotalDiscountPrice() < 10_000 || benefitDetail.getDetails().isEmpty()) {
             System.out.println(NOTING.getMessage());
         }
 
-        for (Map.Entry<String, Integer> entry : eventDetail.getDetails().entrySet()) {
+        for (Map.Entry<String, Integer> entry : benefitDetail.getDetails().entrySet()) {
             System.out.println(entry.getKey() + formatter.format(entry.getValue()) + "원");
         }
 

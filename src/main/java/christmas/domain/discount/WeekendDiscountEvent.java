@@ -1,11 +1,10 @@
 package christmas.domain.discount;
 
 import christmas.domain.OrderSheet;
-import christmas.domain.detail.EventDetail;
+import christmas.domain.detail.BenefitDetail;
 import christmas.domain.discountpolicy.DiscountPolicy;
 import christmas.domain.menu.MenuType;
 
-import java.util.List;
 import java.util.Map;
 
 public class WeekendDiscountEvent extends Discount {
@@ -18,10 +17,10 @@ public class WeekendDiscountEvent extends Discount {
     }
 
     @Override
-    public void calculateDiscountAndSaveDetail(EventDetail eventDetail, OrderSheet orderSheet) {
+    public void calculateDiscountAndSaveDetail(BenefitDetail benefitDetail, OrderSheet orderSheet) {
         for (DiscountPolicy policy : policies) {
             if (policy.isSatisfiedBy(orderSheet)) {
-                eventDetail.saveEvent(DISCOUNT_NAME, discountPrice(orderSheet));
+                benefitDetail.saveEvent(DISCOUNT_NAME, discountPrice(orderSheet));
             }
         }
     }

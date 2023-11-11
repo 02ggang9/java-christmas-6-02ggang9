@@ -1,7 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.OrderSheet;
-import christmas.domain.detail.EventDetail;
+import christmas.domain.detail.BenefitDetail;
 import christmas.domain.menu.Event;
 import christmas.repository.ChristmasOrderMenuRepository;
 import christmas.service.ChristmasService;
@@ -38,12 +38,12 @@ public class ChristmasController {
         printGiveMenu(event);
 
         // STEP 7 : 혜택 내역 출력
-        EventDetail eventDetail = new EventDetail();
-        eventDetail.saveEventDetails(findOrderSheet);
-        printBenefitDetails(eventDetail);
+        BenefitDetail benefitDetail = new BenefitDetail();
+        benefitDetail.saveEventDetails(findOrderSheet);
+        printBenefitDetails(benefitDetail);
 
         // STEP 8 : 총 혜택 금액 출력
-        int totalDiscountPrice = eventDetail.getTotalDiscountPrice();
+        int totalDiscountPrice = benefitDetail.getTotalDiscountPrice();
         printTotalDiscountAmount(totalDiscountPrice);
 
         // STEP 9 : 할인 후 예상 결제 금액 출력
@@ -78,8 +78,8 @@ public class ChristmasController {
         christmasOutputView.totalDiscountAmount(totalDiscountAmount);
     }
 
-    private void printBenefitDetails(EventDetail eventDetail) {
-        christmasOutputView.printBenefitDetails(eventDetail);
+    private void printBenefitDetails(BenefitDetail benefitDetail) {
+        christmasOutputView.printBenefitDetails(benefitDetail);
     }
 
     private Event getGiveMenu(Integer amountBeforeDiscount) {

@@ -4,12 +4,11 @@ import christmas.domain.OrderSheet;
 import christmas.domain.discount.*;
 import christmas.domain.discountpolicy.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EventDetail {
+public class BenefitDetail {
 
     private static final List<Discount> events = List.of(
             new ChristmasDiscountEvent(new ChristmasDiscountPolicy()),
@@ -21,7 +20,7 @@ public class EventDetail {
 
     private final Map<String, Integer> details = new HashMap<>();
 
-    public EventDetail() {
+    public BenefitDetail() {
     }
 
     public void saveEventDetails(OrderSheet orderSheet) {
