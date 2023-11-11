@@ -54,12 +54,12 @@ public class ChristmasService {
 //        return ChristmasDiscountEvent.discountAmount(dateOfVisit);
 //    }
 
-    public int getWeekdayDiscountAmount() {
-        WeekdayDiscountEvent weekdayDiscountEvent = new WeekdayDiscountEvent();
-        int dateOfVisit = repository.findDateOfVisit();
-        int dessertCount = christmasOrderMenuRepository.findDessertCount();
-        return weekdayDiscountEvent.discountAmount(dateOfVisit, dessertCount);
-    }
+//    public int getWeekdayDiscountAmount() {
+//        WeekdayDiscountEvent weekdayDiscountEvent = new WeekdayDiscountEvent();
+//        int dateOfVisit = repository.findDateOfVisit();
+//        int dessertCount = christmasOrderMenuRepository.findDessertCount();
+//        return weekdayDiscountEvent.discountAmount(dateOfVisit, dessertCount);
+//    }
 
     public int getWeekendDiscountAmount() {
         WeekendDiscountEvent weekendDiscountEvent = new WeekendDiscountEvent();

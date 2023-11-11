@@ -1,20 +1,31 @@
 package christmas.domain.discount;
 
+import christmas.domain.OrderSheet;
+import christmas.domain.detail.EventDetail;
+import christmas.domain.discountpolicy.DiscountPolicy;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpecialDiscountEvent {
+public class SpecialDiscountEvent extends Discount {
 
-    List<Integer> days = List.of(3, 10, 17, 24, 25, 31);
-
+    private static final String DISCOUNT_NAME = "특별 할인: -";
     private static final int BASE_DISCOUNT_AMOUNT = 1000;
 
-    public int discountAmount(int dateOfVisit) {
-        if (days.contains(dateOfVisit)) {
-            return BASE_DISCOUNT_AMOUNT;
-        }
-
-        return 0;
+    public SpecialDiscountEvent(DiscountPolicy... policies) {
+        super(policies);
     }
 
+    @Override
+    public void calculateDiscountAndSaveDetail(EventDetail eventDetail, OrderSheet orderSheet) {
+        for (DiscountPolicy policy : policies) {
+            if (policy.isSatisfiedBy(orderSheet)) {
+                eventDetail.saveEvent(DISCOUNT_NAME, discountPrice(orderSheet));
+            }
+        }
+    }
+
+    private int discountPrice(OrderSheet orderSheet) {
+        return BASE_DISCOUNT_AMOUNT;
+    }
 }
