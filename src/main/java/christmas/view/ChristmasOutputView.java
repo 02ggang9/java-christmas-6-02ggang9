@@ -1,6 +1,7 @@
 package christmas.view;
 
 import christmas.domain.OrderSheet;
+import christmas.domain.badge.Badge;
 import christmas.domain.detail.BenefitDetail;
 import christmas.domain.menu.Event;
 
@@ -122,30 +123,10 @@ public class ChristmasOutputView {
         System.out.println(formatter.format(beforeDiscountPrice - benefitDetail.getTotalBenefitPrice()) + "원");
     }
 
-    public void printEventBadge(int totalDiscountAmount) {
-        DecimalFormat formatter = new DecimalFormat("###,###,###");
-
+    public void printEventBadge(Badge badge) {
         System.out.println();
         System.out.println("<12월 이벤트 배지>");
-
-        if (totalDiscountAmount > 0 && totalDiscountAmount < 5000) {
-            System.out.println("없음");
-            return;
-        }
-
-        if (totalDiscountAmount >= 5000 && totalDiscountAmount < 10000) {
-            System.out.println("별");
-        }
-
-        if (totalDiscountAmount >= 10000 && totalDiscountAmount < 20000) {
-            System.out.println("트리");
-        }
-
-        if (totalDiscountAmount >= 20000) {
-            System.out.println("산타");
-        }
-
-
+        System.out.println(badge.getBadgeName());
     }
 
     public void printOrderMenusAndCounts(OrderSheet orderSheet) {

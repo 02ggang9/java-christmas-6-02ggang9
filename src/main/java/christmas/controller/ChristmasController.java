@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.OrderSheet;
+import christmas.domain.badge.Badge;
 import christmas.domain.detail.BenefitDetail;
 import christmas.domain.menu.Event;
 import christmas.repository.ChristmasOrderMenuRepository;
@@ -43,14 +44,14 @@ public class ChristmasController {
         printBenefitDetails(benefitDetail);
 
         // STEP 8 : 총 혜택 금액 출력
-        int totalDiscountPrice = benefitDetail.getTotalBenefitPrice();
-        printTotalDiscountAmount(totalDiscountPrice);
+        int totalBenefitPrice = benefitDetail.getTotalBenefitPrice();
+        printTotalDiscountAmount(totalBenefitPrice);
 
         // STEP 9 : 할인 후 예상 결제 금액 출력
         printAfterDiscountAmount(benefitDetail, amountBeforeDiscount);
 
         // STEP 10 : 이벤트 배지 출력
-        printEventBadge(totalDiscountPrice);
+        printEventBadge(christmasService.findBadge(totalBenefitPrice));
     }
 
     private void printOrderMenusAndCounts(OrderSheet orderSheet) {
@@ -66,8 +67,8 @@ public class ChristmasController {
         saveOrderMenu(orderSheet);
     }
 
-    private void printEventBadge(int totalDiscountAmount) {
-        christmasOutputView.printEventBadge(totalDiscountAmount);
+    private void printEventBadge(Badge badge) {
+        christmasOutputView.printEventBadge(badge);
     }
 
     private void printAfterDiscountAmount(BenefitDetail benefitDetail, int beforeDiscountPrice) {
