@@ -90,7 +90,7 @@ public class ChristmasOutputView {
         benefitDetail.getDetails()
                 .forEach((key, value) -> System.out.println(key + formatter.format(value) + "원"));
 
-        System.out.println("증정 이벤트: -" + benefitDetail.getEvent().getDiscountPrice() + "원");
+        System.out.println("증정 이벤트: -" + formatter.format(benefitDetail.getEvent().getDiscountPrice()) + "원");
     }
 
 
@@ -100,7 +100,7 @@ public class ChristmasOutputView {
         System.out.println();
         System.out.println("<총혜택 금액>");
 
-        if (totalDiscountAmount == 0) {
+        if (totalDiscountAmount < 10_000) {
             System.out.println("없음");
             return;
         }

@@ -43,7 +43,7 @@ public class ChristmasController {
         printBenefitDetails(benefitDetail);
 
         // STEP 8 : 총 혜택 금액 출력
-        int totalDiscountPrice = benefitDetail.getTotalDiscountPrice();
+        int totalDiscountPrice = benefitDetail.getTotalBenefitPrice();
         printTotalDiscountAmount(totalDiscountPrice);
 
         // STEP 9 : 할인 후 예상 결제 금액 출력

@@ -45,11 +45,15 @@ public class BenefitDetail {
         return event;
     }
 
-    public int getTotalDiscountPrice() {
-        return details.values()
+    public int getTotalBenefitPrice() {
+        int totalDiscountPrice = details.values()
                 .stream()
                 .mapToInt(Integer::intValue)
                 .sum();
+
+        Integer eventPrice = event.getDiscountPrice();
+
+        return totalDiscountPrice + eventPrice;
     }
 
     public Event setEventGoods(int beforeDiscountPrice) {
