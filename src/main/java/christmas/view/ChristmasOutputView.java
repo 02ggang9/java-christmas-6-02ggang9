@@ -82,14 +82,15 @@ public class ChristmasOutputView {
         System.out.println();
         System.out.println(EVENT_DETAILS.getMessage());
 
-        if (benefitDetail.getTotalDiscountPrice() < 10_000 || benefitDetail.getDetails().isEmpty()) {
+        if (benefitDetail.getEvent() == Event.NOTING) {
             System.out.println(NOTING.getMessage());
+            return;
         }
 
-        for (Map.Entry<String, Integer> entry : benefitDetail.getDetails().entrySet()) {
-            System.out.println(entry.getKey() + formatter.format(entry.getValue()) + "원");
-        }
+        benefitDetail.getDetails()
+                .forEach((key, value) -> System.out.println(key + formatter.format(value) + "원"));
 
+        System.out.println("증정 이벤트: -" + benefitDetail.getEvent().getDiscountPrice() + "원");
     }
 
 
