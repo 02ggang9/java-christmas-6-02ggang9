@@ -5,6 +5,7 @@ import christmas.domain.discount.*;
 import christmas.domain.discountpolicy.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,10 +19,9 @@ public class EventDetail {
             new WeekendDiscountEvent(new WeekendDiscountPolicy())
     );
 
-    private final Map<String, Integer> details;
+    private final Map<String, Integer> details = new HashMap<>();
 
-    public EventDetail(Map<String, Integer> details) {
-        this.details = details;
+    public EventDetail() {
     }
 
     public void saveEventDetails(OrderSheet orderSheet) {
@@ -32,5 +32,16 @@ public class EventDetail {
 
     public void saveEvent(String eventName, int discountPrice) {
         details.put(eventName, discountPrice);
+    }
+
+    public Map<String, Integer> getDetails() {
+        return details;
+    }
+
+    public int getTotalDiscountPrice() {
+        return details.values()
+                .stream()
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 }

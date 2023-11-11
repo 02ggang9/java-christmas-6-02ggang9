@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.OrderSheet;
+import christmas.domain.detail.EventDetail;
 import christmas.domain.menu.GiveMenu;
 import christmas.repository.ChristmasOrderMenuRepository;
 import christmas.service.ChristmasService;
@@ -43,14 +44,17 @@ public class ChristmasController {
         printGiveMenu(giveMenu);
 
         // STEP 7 : 혜택 내역 출력
-        int christmasDiscountAmount = getChristmasDiscountAmount();
-        int weekdayDiscountAmount = getWeekdayDiscountAmount();
-        int weekendDiscountAmount = getWeekendDiscountAmount();
-        int specialDiscountAmount = getSpecialDiscountAmount();
-        int giveDiscountAmount = getGiveDiscountAmount(giveMenu);
-        int totalDiscountAmount = christmasDiscountAmount + weekdayDiscountAmount + weekendDiscountAmount + specialDiscountAmount + giveDiscountAmount;
+//        int christmasDiscountAmount = getChristmasDiscountAmount();
+//        int weekdayDiscountAmount = getWeekdayDiscountAmount();
+//        int weekendDiscountAmount = getWeekendDiscountAmount();
+//        int specialDiscountAmount = getSpecialDiscountAmount();
+//        int giveDiscountAmount = getGiveDiscountAmount(giveMenu);
+//        int totalDiscountAmount = christmasDiscountAmount + weekdayDiscountAmount + weekendDiscountAmount + specialDiscountAmount + giveDiscountAmount;
+//
+//        printBenefitDetails(totalDiscountAmount, weekdayDiscountAmount, christmasDiscountAmount, weekendDiscountAmount, specialDiscountAmount, giveDiscountAmount);
 
-        printBenefitDetails(totalDiscountAmount, weekdayDiscountAmount, christmasDiscountAmount, weekendDiscountAmount, specialDiscountAmount, giveDiscountAmount);
+        printBenefitDetails(new EventDetail());
+
 
         // STEP 8 : 총 혜택 금액 출력
         printTotalDiscountAmount(totalDiscountAmount);
@@ -92,8 +96,12 @@ public class ChristmasController {
         christmasOutputView.totalDiscountAmount(totalDiscountAmount);
     }
 
-    private void printBenefitDetails(int totalCount, int weekdayDiscountAmount, int christmasDiscountAmount, int weekendDiscountAmount, int specialDiscountAmount, int giveDiscountAmount) {
-        christmasOutputView.printBenefitDetails(totalCount, christmasDiscountAmount, weekdayDiscountAmount, weekendDiscountAmount, specialDiscountAmount, giveDiscountAmount);
+//    private void printBenefitDetails(int totalCount, int weekdayDiscountAmount, int christmasDiscountAmount, int weekendDiscountAmount, int specialDiscountAmount, int giveDiscountAmount) {
+//        christmasOutputView.printBenefitDetails(totalCount, christmasDiscountAmount, weekdayDiscountAmount, weekendDiscountAmount, specialDiscountAmount, giveDiscountAmount);
+//    }
+
+    private void printBenefitDetails(EventDetail eventDetail) {
+        christmasOutputView.printBenefitDetails(eventDetail);
     }
 
     private int getGiveDiscountAmount(GiveMenu giveMenu) {

@@ -1,6 +1,7 @@
 package christmas.view;
 
 import christmas.domain.OrderSheet;
+import christmas.domain.detail.EventDetail;
 import christmas.domain.menu.GiveMenu;
 import christmas.domain.menu.OrderMenu;
 import christmas.global.OutputMessage;
@@ -46,37 +47,54 @@ public class ChristmasOutputView {
         System.out.println(giveMenu.getGiveMenuName() + " 1개");
     }
 
-    public void printBenefitDetails(int totalCount, int christmasDiscountAmount, int weekdayDiscountAmount, int weekendDiscountAmount, int specialDiscountAmount, int giveDiscountAmount) {
+//    public void printBenefitDetails(int totalCount, int christmasDiscountAmount, int weekdayDiscountAmount, int weekendDiscountAmount, int specialDiscountAmount, int giveDiscountAmount) {
+//        DecimalFormat formatter = new DecimalFormat("###,###,###");
+//
+//        System.out.println();
+//        System.out.println("<혜택 내역>");
+//        if (totalCount > 0 && totalCount < 10000) {
+//            System.out.println("없음");
+//            return;
+//        }
+//
+//        if (christmasDiscountAmount != 0) {
+//            System.out.println("크리스마스 디데이 할인: -" + formatter.format(christmasDiscountAmount) + "원");
+//        }
+//
+//        if (weekdayDiscountAmount != 0) {
+//            System.out.println("평일 할인: -" + formatter.format(christmasDiscountAmount) + "원");
+//        }
+//
+//        if (weekendDiscountAmount != 0) {
+//            System.out.println("주말 할인: -" + formatter.format(christmasDiscountAmount) + "원");
+//        }
+//
+//        if (specialDiscountAmount != 0) {
+//            System.out.println("특별 할인: -" + formatter.format(christmasDiscountAmount) + "원");
+//        }
+//
+//        if (giveDiscountAmount != 0) {
+//            System.out.println("증정 이벤트: -" + formatter.format(christmasDiscountAmount) + "원");
+//        }
+//
+//    }
+
+    public void printBenefitDetails(EventDetail eventDetail) {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
 
         System.out.println();
-        System.out.println("<혜택 내역>");
-        if (totalCount > 0 && totalCount < 10000) {
-            System.out.println("없음");
-            return;
+        System.out.println(EVENT_DETAILS.getMessage());
+
+        if (eventDetail.getTotalDiscountPrice() < 10_000 || eventDetail.getDetails().isEmpty()) {
+            System.out.println(NOTING.getMessage());
         }
 
-        if (christmasDiscountAmount != 0) {
-            System.out.println("크리스마스 디데이 할인: -" + formatter.format(christmasDiscountAmount) + "원");
-        }
-
-        if (weekdayDiscountAmount != 0) {
-            System.out.println("평일 할인: -" + formatter.format(christmasDiscountAmount) + "원");
-        }
-
-        if (weekendDiscountAmount != 0) {
-            System.out.println("주말 할인: -" + formatter.format(christmasDiscountAmount) + "원");
-        }
-
-        if (specialDiscountAmount != 0) {
-            System.out.println("특별 할인: -" + formatter.format(christmasDiscountAmount) + "원");
-        }
-
-        if (giveDiscountAmount != 0) {
-            System.out.println("증정 이벤트: -" + formatter.format(christmasDiscountAmount) + "원");
+        for (Map.Entry<String, Integer> entry : eventDetail.getDetails().entrySet()) {
+            System.out.println(entry.getKey() + formatter.format(entry.getValue()) + "원");
         }
 
     }
+
 
     public void totalDiscountAmount(int totalDiscountAmount) {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
