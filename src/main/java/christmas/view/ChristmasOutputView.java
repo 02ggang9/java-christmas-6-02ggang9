@@ -108,13 +108,18 @@ public class ChristmasOutputView {
         System.out.println("-" + formatter.format(totalDiscountAmount) + "원");
     }
 
-    public void printAfterDiscountAmount(int afterDiscountAmount) {
+    public void printAfterDiscountAmount(BenefitDetail benefitDetail, int beforeDiscountPrice) {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
 
         System.out.println();
         System.out.println("<할인 후 예상 결제 금액>");
 
-        System.out.println(formatter.format(afterDiscountAmount) + "원");
+        if (benefitDetail.getTotalBenefitPrice() < 10_000) {
+            System.out.println(NOTING.getMessage());
+            return;
+        }
+
+        System.out.println(formatter.format(beforeDiscountPrice - benefitDetail.getTotalBenefitPrice()) + "원");
     }
 
     public void printEventBadge(int totalDiscountAmount) {

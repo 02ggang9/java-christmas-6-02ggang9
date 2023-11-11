@@ -47,7 +47,7 @@ public class ChristmasController {
         printTotalDiscountAmount(totalDiscountPrice);
 
         // STEP 9 : 할인 후 예상 결제 금액 출력
-        printAfterDiscountAmount(amountBeforeDiscount - totalDiscountPrice);
+        printAfterDiscountAmount(benefitDetail, amountBeforeDiscount);
 
         // STEP 10 : 이벤트 배지 출력
         printEventBadge(totalDiscountPrice);
@@ -70,8 +70,8 @@ public class ChristmasController {
         christmasOutputView.printEventBadge(totalDiscountAmount);
     }
 
-    private void printAfterDiscountAmount(int afterDiscountAmount) {
-        christmasOutputView.printAfterDiscountAmount(afterDiscountAmount);
+    private void printAfterDiscountAmount(BenefitDetail benefitDetail, int beforeDiscountPrice) {
+        christmasOutputView.printAfterDiscountAmount(benefitDetail, beforeDiscountPrice);
     }
 
     private void printTotalDiscountAmount(int totalDiscountAmount) {
