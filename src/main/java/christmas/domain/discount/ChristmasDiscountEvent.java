@@ -9,10 +9,6 @@ public class ChristmasDiscountEvent extends Discount{
     private static final Integer BASE_DISCOUNT_AMOUNT = 1000;
     private static final String DISCOUNT_NAME = "크리스마스 디데이 할인: -";
 
-    public int discountAmount(int dateOfVisit) {
-        return BASE_DISCOUNT_AMOUNT + ((dateOfVisit-1) * 100);
-    }
-
     public ChristmasDiscountEvent(DiscountPolicy... policies) {
         super(policies);
     }
