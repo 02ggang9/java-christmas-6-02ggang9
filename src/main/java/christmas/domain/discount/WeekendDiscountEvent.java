@@ -1,18 +1,37 @@
 package christmas.domain.discount;
 
+import christmas.domain.OrderSheet;
+import christmas.domain.detail.EventDetail;
+import christmas.domain.discountpolicy.DiscountPolicy;
+import christmas.domain.menu.MenuType;
+
 import java.util.List;
+import java.util.Map;
 
-public class WeekendDiscountEvent {
+public class WeekendDiscountEvent extends Discount {
 
-    List<Integer> days = List.of(1, 2, 8, 9, 15, 16, 22, 23, 29, 30);
-
+    private static final String DISCOUNT_NAME = "주말 할인: -";
     private static final int BASE_DISCOUNT_AMOUNT = 2023;
 
-    public int discountAmount(int dateOfVisit, int mainMenuCount) {
-        if (days.contains(dateOfVisit)) {
-            return BASE_DISCOUNT_AMOUNT * mainMenuCount;
-        }
+    public WeekendDiscountEvent(DiscountPolicy... policies) {
+        super(policies);
+    }
 
-        return 0;
+    @Override
+    public void calculateDiscountAndSaveDetail(EventDetail eventDetail, OrderSheet orderSheet) {
+        for (DiscountPolicy policy : policies) {
+            if (policy.isSatisfiedBy(orderSheet)) {
+                eventDetail.saveEvent(DISCOUNT_NAME, discountPrice(orderSheet));
+            }
+        }
+    }
+
+    private int discountPrice(OrderSheet orderSheet) {
+        return BASE_DISCOUNT_AMOUNT * orderSheet.getOrders()
+                .entrySet()
+                .stream()
+                .filter(o -> o.getKey().getMenuType() == MenuType.MAIN)
+                .mapToInt(Map.Entry::getValue)
+                .sum();
     }
 }
