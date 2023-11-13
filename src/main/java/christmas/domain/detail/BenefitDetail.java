@@ -42,10 +42,7 @@ public class BenefitDetail {
     }
 
     public int getTotalBenefitPrice() {
-        int totalDiscountPrice = calculateTotalDiscountPrice();
-        Integer eventPrice = event.getDiscountPrice();
-
-        return totalDiscountPrice + eventPrice;
+        return event.getDiscountPrice() + calculateTotalDiscountPrice();
     }
 
     private int calculateTotalDiscountPrice() {
