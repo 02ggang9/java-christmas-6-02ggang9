@@ -1,6 +1,7 @@
 package christmas.domain.detail;
 
 import christmas.domain.OrderSheet;
+import christmas.domain.menu.Event;
 import christmas.domain.menu.OrderMenu;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -52,7 +53,14 @@ class BenefitDetailTest {
     @Test
     @DisplayName("성공적으로 이벤트 굿즈를 저장해야 한다")
     void 성공적으로_이벤트_굿즈를_저장해야_한다() {
+        BenefitDetail benefitDetail = new BenefitDetail();
+        BenefitDetail otherBenefitDetail = new BenefitDetail();
 
+        benefitDetail.setEventGoods(150_000);
+        otherBenefitDetail.setEventGoods(3_000);
+
+        assertThat(benefitDetail.getEvent()).isEqualTo(Event.CHAMPAGNE);
+        assertThat(otherBenefitDetail.getEvent()).isEqualTo(Event.NOTING);
     }
 
 }
