@@ -2,8 +2,6 @@ package christmas.domain.detail;
 
 import christmas.domain.OrderSheet;
 import christmas.domain.menu.Event;
-import christmas.domain.menu.OrderMenu;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +9,6 @@ import java.util.List;
 
 import static christmas.domain.menu.OrderMenu.*;
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BenefitDetailTest {
 
@@ -36,18 +33,6 @@ class BenefitDetailTest {
 
         assertThat(benefitDetail.getDetails().containsKey("특별 할인: -")).isTrue();
         assertThat(benefitDetail.getDetails().get("특별 할인: -")).isEqualTo(1000);
-    }
-
-    @Test
-    @DisplayName("성공적으로 총 금액을 계산해야 한다")
-    void 성공적으로_총_금액을_계산해야_한다() {
-
-    }
-
-    @Test
-    @DisplayName("성공적으로 총 할인 금액을 계산해야 한다")
-    void 성공적으로_총_할인_금액을_계산해야_한다() {
-
     }
 
     @Test
