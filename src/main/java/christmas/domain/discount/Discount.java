@@ -14,5 +14,13 @@ public abstract class Discount {
         this.policies = Arrays.asList(policies);
     }
 
-    public abstract void calculateDiscountAndSaveDetail(BenefitDetail benefitDetail, OrderSheet orderSheet);
+    public void calculateDiscountAndSaveDetail(BenefitDetail benefitDetail, OrderSheet orderSheet) {
+        for (DiscountPolicy policy : policies) {
+            if (policy.isSatisfiedBy(orderSheet)) {
+                calculateAndSave(benefitDetail, orderSheet);
+            }
+        }
+    }
+
+    abstract protected void calculateAndSave(BenefitDetail benefitDetail, OrderSheet orderSheet);
 }
