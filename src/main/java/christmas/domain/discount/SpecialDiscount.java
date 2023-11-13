@@ -14,12 +14,8 @@ public class SpecialDiscount extends Discount {
     }
 
     @Override
-    public void calculateDiscountAndSaveDetail(BenefitDetail benefitDetail, OrderSheet orderSheet) {
-        for (DiscountPolicy policy : policies) {
-            if (policy.isSatisfiedBy(orderSheet)) {
-                benefitDetail.saveEvent(DISCOUNT_NAME, discountPrice(orderSheet));
-            }
-        }
+    protected void calculateAndSave(BenefitDetail benefitDetail, OrderSheet orderSheet) {
+        benefitDetail.saveEvent(DISCOUNT_NAME, discountPrice(orderSheet));
     }
 
     private int discountPrice(OrderSheet orderSheet) {
