@@ -3,8 +3,6 @@ package christmas.domain.detail;
 import christmas.domain.OrderSheet;
 import christmas.domain.discount.*;
 import christmas.domain.discountpolicy.*;
-import christmas.domain.event.GiveMenuDiscountEvent;
-import christmas.domain.event.GiveMenuDiscountPolicy;
 import christmas.domain.menu.Event;
 
 import java.util.Arrays;

@@ -16,14 +16,6 @@ public class ChristmasOutputView {
         System.out.println(EVENT_PREVIEW.getMessage());
     }
 
-//    public void printOrderMenuAndCounts(Set<Map.Entry<String, Integer>> orderMenus) {
-//        System.out.println();
-//        System.out.println("<주문 메뉴>");
-//        for (Map.Entry<String, Integer> orderMenu : orderMenus) {
-//            System.out.println(orderMenu.getKey() + " " + orderMenu.getValue());
-//        }
-//    }
-
     public void printTotalAmountBeforeDiscount(Integer amountBeforeDiscount) {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
 
@@ -44,38 +36,6 @@ public class ChristmasOutputView {
 
         System.out.println(event.getGiveMenuName() + " 1개");
     }
-
-//    public void printBenefitDetails(int totalCount, int christmasDiscountAmount, int weekdayDiscountAmount, int weekendDiscountAmount, int specialDiscountAmount, int giveDiscountAmount) {
-//        DecimalFormat formatter = new DecimalFormat("###,###,###");
-//
-//        System.out.println();
-//        System.out.println("<혜택 내역>");
-//        if (totalCount > 0 && totalCount < 10000) {
-//            System.out.println("없음");
-//            return;
-//        }
-//
-//        if (christmasDiscountAmount != 0) {
-//            System.out.println("크리스마스 디데이 할인: -" + formatter.format(christmasDiscountAmount) + "원");
-//        }
-//
-//        if (weekdayDiscountAmount != 0) {
-//            System.out.println("평일 할인: -" + formatter.format(christmasDiscountAmount) + "원");
-//        }
-//
-//        if (weekendDiscountAmount != 0) {
-//            System.out.println("주말 할인: -" + formatter.format(christmasDiscountAmount) + "원");
-//        }
-//
-//        if (specialDiscountAmount != 0) {
-//            System.out.println("특별 할인: -" + formatter.format(christmasDiscountAmount) + "원");
-//        }
-//
-//        if (giveDiscountAmount != 0) {
-//            System.out.println("증정 이벤트: -" + formatter.format(christmasDiscountAmount) + "원");
-//        }
-//
-//    }
 
     public void printBenefitDetails(BenefitDetail benefitDetail) {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
