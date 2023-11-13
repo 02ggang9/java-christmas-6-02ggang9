@@ -57,13 +57,6 @@ public enum OrderMenu {
         return this.function.apply(count);
     }
 
-    public static OrderMenu getOrderMenu(String orderName) {
-        return Arrays.stream(OrderMenu.values())
-                .filter(orderMenu -> orderMenu.getMenuName().equals(orderName))
-                .findFirst()
-                .orElse(null);
-    }
-
     public static OrderMenu fromMenuName(String menuName) {
         return Arrays.stream(OrderMenu.values())
                 .filter(orderMenu -> orderMenu.getMenuName().equals(menuName))
