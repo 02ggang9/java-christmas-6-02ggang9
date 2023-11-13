@@ -28,4 +28,18 @@ class SpecialDiscountTest {
         assertThat(benefitDetail.getDetails().containsKey("특별 할인: -")).isTrue();
         assertThat(benefitDetail.getDetails().get("특별 할인: -")).isEqualTo(BASE_DISCOUNT);
     }
+
+    @Test
+    @DisplayName("특별 할인을 실패해야 한다.")
+    void 특별_할인을_실패해야_한다() {
+        final int normalDay = 11;
+        SpecialDiscount specialDiscount = new SpecialDiscount(new SpecialDiscountPolicy());
+        OrderSheet orderSheet = new OrderSheet(List.of("타파스"), List.of(3), normalDay);
+        BenefitDetail benefitDetail = new BenefitDetail();
+
+        specialDiscount.calculateDiscountAndSaveDetail(benefitDetail, orderSheet);
+
+        assertThat(benefitDetail.getDetails().containsKey("특별 할인: -")).isFalse();
+
+    }
 }
