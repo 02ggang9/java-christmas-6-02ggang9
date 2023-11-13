@@ -68,6 +68,6 @@ public enum OrderMenu {
         return Arrays.stream(OrderMenu.values())
                 .filter(orderMenu -> orderMenu.getMenuName().equals(menuName))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException());
+                .orElseThrow(IllegalArgumentException::new);
     }
 }
