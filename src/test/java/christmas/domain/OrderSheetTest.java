@@ -28,4 +28,20 @@ class OrderSheetTest {
         assertThat(findOrders.get(OrderMenu.fromMenuName(orderMenus.get(1)))).isEqualTo(4);
     }
 
+    @Test
+    @DisplayName("전체 요금 계산을 성공해야 한다.")
+    void 전체_요금_계산을_성공해야_한다() {
+        List<String> orderMenus = List.of("타파스", "티본스테이크");
+        List<Integer> orderCounts = List.of(3, 4);
+
+        OrderSheet orderSheet = new OrderSheet(orderMenus, orderCounts, 3);
+        Map<OrderMenu, Integer> findOrders = orderSheet.getOrders();
+        int expectedSum = findOrders.entrySet()
+                .stream()
+                .mapToInt(entry -> entry.getKey().calculatePrice(entry.getValue()))
+                .sum();
+
+        assertThat(orderSheet.calculateTotalPrice()).isEqualTo(expectedSum);
+    }
+
 }
