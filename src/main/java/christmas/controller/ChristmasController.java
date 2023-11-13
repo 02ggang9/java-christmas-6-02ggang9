@@ -11,10 +11,21 @@ import christmas.view.ChristmasOutputView;
 
 public class ChristmasController {
 
-    private final ChristmasInputView christmasInputView = new ChristmasInputView();
-    private final ChristmasOutputView christmasOutputView = new ChristmasOutputView();
-    private final ChristmasService christmasService = new ChristmasService();
-    private final ChristmasOrderMenuRepository christmasOrderMenuRepository = new ChristmasOrderMenuRepository();
+    private final ChristmasInputView christmasInputView;
+    private final ChristmasOutputView christmasOutputView;
+    private final ChristmasService christmasService;
+    private final ChristmasOrderMenuRepository christmasOrderMenuRepository;
+
+    public ChristmasController(ChristmasInputView christmasInputView,
+                               ChristmasOutputView christmasOutputView,
+                               ChristmasService christmasService,
+                               ChristmasOrderMenuRepository christmasOrderMenuRepository
+    ) {
+        this.christmasInputView = christmasInputView;
+        this.christmasOutputView = christmasOutputView;
+        this.christmasService = christmasService;
+        this.christmasOrderMenuRepository = christmasOrderMenuRepository;
+    }
 
     public void run() {
         // STEP1 : 예상 방문 날짜 입력받고 저장

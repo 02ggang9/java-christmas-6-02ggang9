@@ -12,7 +12,11 @@ import static christmas.domain.badge.Badge.*;
 
 public class ChristmasService {
 
-    private final ChristmasOrderMenuRepository christmasOrderMenuRepository = new ChristmasOrderMenuRepository();
+    private final ChristmasOrderMenuRepository christmasOrderMenuRepository;
+
+    public ChristmasService(ChristmasOrderMenuRepository christmasOrderMenuRepository) {
+        this.christmasOrderMenuRepository = christmasOrderMenuRepository;
+    }
 
     public Integer calculateTotalAmount() {
         OrderSheet findOrderSheet = christmasOrderMenuRepository.findOrderSheetById(0L);
