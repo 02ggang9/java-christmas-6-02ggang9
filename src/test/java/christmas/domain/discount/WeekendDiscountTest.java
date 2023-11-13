@@ -33,4 +33,19 @@ class WeekendDiscountTest {
         assertThat(benefitDetail.getDetails().get("주말 할인: -")).isEqualTo(BASE_DISCOUNT_PRICE * (mainMenuCount + otherMainMenuCount));
     }
 
+    @Test
+    @DisplayName("주말 할인에 실패해야 한다.")
+    void 주말_할인에_실패해야_한다() {
+        int dateOfVisit = 3;
+        int mainMenuCount = 3;
+        int otherMainMenuCount = 4;
+        BenefitDetail benefitDetail = new BenefitDetail();
+        OrderSheet orderSheet = new OrderSheet(List.of(SEAFOOD_PASTA.getMenuName(), BARBECUE_RIBS.getMenuName()), List.of(mainMenuCount, otherMainMenuCount), dateOfVisit);
+        WeekendDiscount weekendDiscount = new WeekendDiscount(new WeekendDiscountPolicy());
+
+        weekendDiscount.calculateDiscountAndSaveDetail(benefitDetail, orderSheet);
+
+        assertThat(benefitDetail.getDetails().containsKey("주말 할인: -")).isFalse();
+    }
+
 }
