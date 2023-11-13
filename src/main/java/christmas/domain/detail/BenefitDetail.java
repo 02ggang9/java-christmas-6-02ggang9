@@ -26,9 +26,7 @@ public class BenefitDetail {
     }
 
     public void saveEventDetails(OrderSheet orderSheet) {
-        for (Discount discount : discounts) {
-            discount.calculateDiscountAndSaveDetail(this, orderSheet);
-        }
+        discounts.forEach(discount -> discount.calculateDiscountAndSaveDetail(this, orderSheet));
     }
 
     public void saveEvent(String eventName, int discountPrice) {
