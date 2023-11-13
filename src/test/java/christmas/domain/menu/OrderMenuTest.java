@@ -19,4 +19,12 @@ class OrderMenuTest {
         assertThat(caesarSalad.calculatePrice(orderMenuCount)).isEqualTo(caesarSalad.getMenuPrice() * orderMenuCount);
     }
 
+    @Test
+    @DisplayName("성공적으로 주문 메뉴 타입을 반환해야 한다.")
+    void 성공적으로_주문_메뉴_타입을_반환해야_한다() {
+        OrderMenu expectedMenuType = MUSHROOM_SOUP;
+
+        assertThat(OrderMenu.fromMenuName("양송이수프")).isEqualTo(expectedMenuType);
+    }
+
 }
