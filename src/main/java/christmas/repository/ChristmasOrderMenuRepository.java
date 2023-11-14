@@ -10,8 +10,6 @@ import java.util.Set;
 public class ChristmasOrderMenuRepository {
 
     private static final Map<Long, OrderSheet> orderSheetDatabase = new HashMap<>();
-    private final Map<String, Integer> orderMenuDatabase = new HashMap<>();
-
     private static Long orderSheetId = 0L;
 
     public void saveOrderSheet(OrderSheet orderSheet) {

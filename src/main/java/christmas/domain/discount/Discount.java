@@ -15,11 +15,9 @@ public abstract class Discount {
     }
 
     public void calculateDiscountAndSaveDetail(BenefitDetail benefitDetail, OrderSheet orderSheet) {
-        for (DiscountPolicy policy : policies) {
-            if (policy.isSatisfiedBy(orderSheet)) {
-                calculateAndSave(benefitDetail, orderSheet);
-            }
-        }
+        policies.stream()
+                .filter(discountPolicy -> discountPolicy.isSatisfiedBy(orderSheet))
+                .forEach(discountPolicy -> calculateAndSave(benefitDetail, orderSheet));
     }
 
     abstract protected void calculateAndSave(BenefitDetail benefitDetail, OrderSheet orderSheet);

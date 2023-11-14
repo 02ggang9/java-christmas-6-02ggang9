@@ -23,10 +23,6 @@ public class ChristmasService {
         return findOrderSheet.calculateTotalPrice();
     }
 
-    public Event getGiveMenu(Integer price) {
-        return Event.getGiveMenu(price);
-    }
-
     public OrderSheet findOrderSheet() {
         return christmasOrderMenuRepository.findOrderSheetById(0L);
     }
