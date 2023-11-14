@@ -15,6 +15,9 @@ import static christmas.global.InputMessage.*;
 
 public class ChristmasInputView {
 
+    private static final String MENU_SEPERATOR = ",";
+    private static final String COUNT_SEPERATOR = "-";
+
     public int getUserDateOfVisit() {
         System.out.println(ORDER_DATE_OF_VISIT.getMessage());
 
@@ -87,10 +90,10 @@ public class ChristmasInputView {
 
     private List<String> getMenus(String menuAndCount) {
         try {
-            return Arrays.stream(menuAndCount.split(","))
+            return Arrays.stream(menuAndCount.split(MENU_SEPERATOR))
                     .toList()
                     .stream()
-                    .map(s -> s.split("-")[0])
+                    .map(s -> s.split(COUNT_SEPERATOR)[0])
                     .toList();
         } catch (RuntimeException e) {
             throw new IllegalArgumentException();
