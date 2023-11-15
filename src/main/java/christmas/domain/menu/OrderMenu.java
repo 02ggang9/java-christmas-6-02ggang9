@@ -53,11 +53,11 @@ public enum OrderMenu {
         return function;
     }
 
-    public Integer calculatePrice(int count) {
+    public Integer calculatePrice(final int count) {
         return this.function.apply(count);
     }
 
-    public static OrderMenu fromMenuName(String menuName) {
+    public static OrderMenu fromMenuName(final String menuName) {
         return Arrays.stream(OrderMenu.values())
                 .filter(orderMenu -> orderMenu.getMenuName().equals(menuName))
                 .findFirst()

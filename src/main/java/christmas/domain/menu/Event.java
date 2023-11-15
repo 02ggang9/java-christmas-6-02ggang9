@@ -31,7 +31,7 @@ public enum Event {
         return function;
     }
 
-    public static Event getGiveMenu(Integer totalPrice) {
+    public static Event getGiveMenu(final Integer totalPrice) {
         return Arrays.stream(Event.values())
                 .filter(event -> event.function.apply(totalPrice))
                 .findFirst()
