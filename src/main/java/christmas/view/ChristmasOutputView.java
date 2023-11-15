@@ -16,7 +16,7 @@ public class ChristmasOutputView {
         System.out.println(EVENT_PREVIEW.getMessage());
     }
 
-    public void printTotalAmountBeforeDiscount(Integer amountBeforeDiscount) {
+    public void printTotalAmountBeforeDiscount(final Integer amountBeforeDiscount) {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
 
         System.out.println();
@@ -25,7 +25,7 @@ public class ChristmasOutputView {
         System.out.println(formatter.format(amountBeforeDiscount) + "원");
     }
 
-    public void printGiveMenu(Event event) {
+    public void printGiveMenu(final Event event) {
         System.out.println();
         System.out.println(GIVE_MENU.getMessage());
 
@@ -37,7 +37,7 @@ public class ChristmasOutputView {
         System.out.println(event.getGiveMenuName() + " 1개");
     }
 
-    public void printBenefitDetails(BenefitDetail benefitDetail) {
+    public void printBenefitDetails(final BenefitDetail benefitDetail) {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
 
         System.out.println();
@@ -55,7 +55,7 @@ public class ChristmasOutputView {
     }
 
 
-    public void totalDiscountAmount(int totalDiscountAmount) {
+    public void totalDiscountAmount(final int totalDiscountAmount) {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
 
         System.out.println();
@@ -69,7 +69,7 @@ public class ChristmasOutputView {
         System.out.println("-" + formatter.format(totalDiscountAmount) + "원");
     }
 
-    public void printAfterDiscountAmount(BenefitDetail benefitDetail, int beforeDiscountPrice) {
+    public void printAfterDiscountAmount(final BenefitDetail benefitDetail, final int beforeDiscountPrice) {
         DecimalFormat formatter = new DecimalFormat("###,###,###");
 
         System.out.println();
@@ -83,13 +83,13 @@ public class ChristmasOutputView {
         System.out.println(formatter.format(beforeDiscountPrice - benefitDetail.getTotalDiscountPrice()) + "원");
     }
 
-    public void printEventBadge(Badge badge) {
+    public void printEventBadge(final Badge badge) {
         System.out.println();
         System.out.println("<12월 이벤트 배지>");
         System.out.println(badge.getBadgeName());
     }
 
-    public void printOrderMenusAndCounts(OrderSheet orderSheet) {
+    public void printOrderMenusAndCounts(final OrderSheet orderSheet) {
         System.out.println();
         System.out.println(ORDER_MENU.getMessage());
         orderSheet.getOrders()
