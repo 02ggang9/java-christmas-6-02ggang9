@@ -14,7 +14,7 @@ public class ChristmasService {
 
     private final ChristmasOrderMenuRepository christmasOrderMenuRepository;
 
-    public ChristmasService(ChristmasOrderMenuRepository christmasOrderMenuRepository) {
+    public ChristmasService(final ChristmasOrderMenuRepository christmasOrderMenuRepository) {
         this.christmasOrderMenuRepository = christmasOrderMenuRepository;
     }
 
@@ -27,7 +27,7 @@ public class ChristmasService {
         return christmasOrderMenuRepository.findOrderSheetById(0L);
     }
 
-    public Badge findBadge(int totalBenefitPrice) {
+    public Badge findBadge(final int totalBenefitPrice) {
         return Arrays.stream(values())
                 .filter(badge -> badge.getFunction().apply(totalBenefitPrice))
                 .findFirst()

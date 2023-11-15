@@ -12,12 +12,12 @@ public class ChristmasOrderMenuRepository {
     private static final Map<Long, OrderSheet> orderSheetDatabase = new HashMap<>();
     private static Long orderSheetId = 0L;
 
-    public void saveOrderSheet(OrderSheet orderSheet) {
+    public void saveOrderSheet(final OrderSheet orderSheet) {
         orderSheetDatabase.put(orderSheetId, orderSheet);
         orderSheetId++;
     }
 
-    public OrderSheet findOrderSheetById(Long id) {
+    public OrderSheet findOrderSheetById(final Long id) {
         return orderSheetDatabase.get(id);
     }
 }
