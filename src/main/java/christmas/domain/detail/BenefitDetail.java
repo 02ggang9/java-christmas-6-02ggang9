@@ -12,7 +12,6 @@ import java.util.Map;
 
 public class BenefitDetail {
 
-    // TODO : 팩토리 생성
     private static final List<Discount> discounts = List.of(
             new ChristmasDiscount(new ChristmasDiscountPolicy()),
             new SpecialDiscount(new SpecialDiscountPolicy()),

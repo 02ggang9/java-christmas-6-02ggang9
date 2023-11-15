@@ -23,7 +23,6 @@ class ChristmasInputViewTest {
         when(Console.readLine()).thenReturn(String.valueOf(dateOfVisit));
 
         ChristmasInputView christmasInputView = new ChristmasInputView();
-        christmasInputView.getUserDateOfVisit();
         assertThatCode(christmasInputView::getUserDateOfVisit).doesNotThrowAnyException();
 
         consoleMockedStatic.close();
