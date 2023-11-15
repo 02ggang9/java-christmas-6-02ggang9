@@ -12,7 +12,7 @@ public class OrderSheet {
     private final Map<OrderMenu, Integer> orders = new HashMap<>();
     private final int dateOfVisit;
 
-    public OrderSheet(List<String> menus, List<Integer> counts, int dateOfVisit) {
+    public OrderSheet(final List<String> menus, final List<Integer> counts, final int dateOfVisit) {
         this.dateOfVisit = dateOfVisit;
         IntStream.range(0, menus.size())
                 .forEach(i -> orders.put(OrderMenu.fromMenuName(menus.get(i)), counts.get(i)));
