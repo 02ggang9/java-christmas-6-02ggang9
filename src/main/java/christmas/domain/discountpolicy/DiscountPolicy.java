@@ -4,5 +4,5 @@ import christmas.domain.OrderSheet;
 
 public interface DiscountPolicy {
 
-    boolean isSatisfiedBy(OrderSheet orderSheet);
+    boolean isSatisfiedBy(final OrderSheet orderSheet);
 }

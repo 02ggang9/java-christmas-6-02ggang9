@@ -6,7 +6,7 @@ import java.util.List;
 
 public class WeekendDiscountPolicy implements DiscountPolicy {
     @Override
-    public boolean isSatisfiedBy(OrderSheet orderSheet) {
+    public boolean isSatisfiedBy(final OrderSheet orderSheet) {
         List<Integer> days = List.of(1, 2, 8, 9, 15, 16, 22, 23, 29, 30);
         return days.contains(orderSheet.getDateOfVisit());
     }
