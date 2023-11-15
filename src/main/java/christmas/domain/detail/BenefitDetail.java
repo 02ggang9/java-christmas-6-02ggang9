@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class BenefitDetail {
 
-    // TODO : 팩토리 생성, 커스텀 Exception, 매직넘버
+    // TODO : 팩토리 생성
     private static final List<Discount> discounts = List.of(
             new ChristmasDiscount(new ChristmasDiscountPolicy()),
             new SpecialDiscount(new SpecialDiscountPolicy()),

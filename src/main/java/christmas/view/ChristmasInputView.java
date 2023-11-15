@@ -102,10 +102,10 @@ public class ChristmasInputView {
 
     private List<Integer> getCounts(String menuAndCount) {
         try {
-            return Arrays.stream(menuAndCount.split(","))
+            return Arrays.stream(menuAndCount.split(MENU_SEPERATOR))
                     .toList()
                     .stream()
-                    .map(s -> s.split("-")[1])
+                    .map(s -> s.split(COUNT_SEPERATOR)[1])
                     .map(Integer::parseInt)
                     .toList();
         } catch (RuntimeException e) {
