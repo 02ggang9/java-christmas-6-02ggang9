@@ -26,11 +26,11 @@ public class BenefitDetail {
     public BenefitDetail() {
     }
 
-    public void saveEventDetails(OrderSheet orderSheet) {
+    public void saveEventDetails(final OrderSheet orderSheet) {
         discounts.forEach(discount -> discount.calculateDiscountAndSaveDetail(this, orderSheet));
     }
 
-    public void saveEvent(String eventName, int discountPrice) {
+    public void saveEvent(final String eventName, final int discountPrice) {
         details.put(eventName, discountPrice);
     }
 
@@ -57,7 +57,7 @@ public class BenefitDetail {
         return calculateTotalDiscountPrice();
     }
 
-    public Event setEventGoods(int beforeDiscountPrice) {
+    public Event setEventGoods(final int beforeDiscountPrice) {
         this.event = Arrays.stream(Event.values())
                 .filter(event -> event.getFunction().apply(beforeDiscountPrice))
                 .findFirst()
