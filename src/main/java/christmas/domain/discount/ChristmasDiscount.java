@@ -14,11 +14,11 @@ public class ChristmasDiscount extends Discount{
     }
 
     @Override
-    protected void calculateAndSave(BenefitDetail benefitDetail, OrderSheet orderSheet) {
+    protected void calculateAndSave(final BenefitDetail benefitDetail, final OrderSheet orderSheet) {
         benefitDetail.saveEvent(DISCOUNT_NAME, discountPrice(orderSheet.getDateOfVisit()));
     }
 
-    private int discountPrice(int dateOfVisit) {
+    private int discountPrice(final int dateOfVisit) {
         return BASE_DISCOUNT_AMOUNT + ((dateOfVisit-1) * 100);
     }
 

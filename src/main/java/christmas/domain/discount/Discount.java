@@ -14,11 +14,11 @@ public abstract class Discount {
         this.policies = Arrays.asList(policies);
     }
 
-    public void calculateDiscountAndSaveDetail(BenefitDetail benefitDetail, OrderSheet orderSheet) {
+    public void calculateDiscountAndSaveDetail(final BenefitDetail benefitDetail, final OrderSheet orderSheet) {
         policies.stream()
                 .filter(discountPolicy -> discountPolicy.isSatisfiedBy(orderSheet))
                 .forEach(discountPolicy -> calculateAndSave(benefitDetail, orderSheet));
     }
 
-    abstract protected void calculateAndSave(BenefitDetail benefitDetail, OrderSheet orderSheet);
+    abstract protected void calculateAndSave(final BenefitDetail benefitDetail, final OrderSheet orderSheet);
 }

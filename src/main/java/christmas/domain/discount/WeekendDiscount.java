@@ -17,11 +17,11 @@ public class WeekendDiscount extends Discount {
     }
 
     @Override
-    protected void calculateAndSave(BenefitDetail benefitDetail, OrderSheet orderSheet) {
+    protected void calculateAndSave(final BenefitDetail benefitDetail, final OrderSheet orderSheet) {
         benefitDetail.saveEvent(DISCOUNT_NAME, discountPrice(orderSheet));
     }
 
-    private int discountPrice(OrderSheet orderSheet) {
+    private int discountPrice(final OrderSheet orderSheet) {
         return BASE_DISCOUNT_AMOUNT * orderSheet.getOrders()
                 .entrySet()
                 .stream()
